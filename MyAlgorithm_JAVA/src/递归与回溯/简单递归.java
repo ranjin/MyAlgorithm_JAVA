@@ -1,3 +1,4 @@
+package 递归与回溯;
 import java.util.Scanner;import javax.security.auth.kerberos.KerberosKey;
 
 public class 简单递归 {
@@ -18,12 +19,12 @@ public class 简单递归 {
 		System.out.println(k);
 	}
 	
-	//从1到100
-	public static int simple(int k) {
-		if (k == 1) {
-			return 1;
+	//从1到n的和
+	public static int sum(int n) {
+		if (n<=1) {
+			return n;
 		}else {
-			return simple(k-1)+k;
+			return n+sum(n-1);
 		}
 	}
 	
@@ -40,6 +41,9 @@ public class 简单递归 {
 		}
 		return count;
 	}
+	
+	//斐波那契数列
+	
 	
 	//使用递归，计算从 n，n+t, n+2t, .... n+ mt 的值(m >=1)
 	public static int nTomt(int n, int t, int m) {

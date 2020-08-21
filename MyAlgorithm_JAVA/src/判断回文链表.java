@@ -39,7 +39,7 @@ public class 判断回文链表 {
 		return pre;
 	}
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
+		
 
 	}
 
