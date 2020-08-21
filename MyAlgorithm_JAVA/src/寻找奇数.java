@@ -1,18 +1,17 @@
-import java.util.Scanner;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
 
 public class 寻找奇数 {
 
-	public static void main(String[] args) {
-		Scanner scanner = new Scanner(System.in);
-		int count  = scanner.nextInt();
-		int arr[] = new int[count];
-		for (int i = 0; i < count; i++) {
-			arr[i] = scanner.nextInt();
+	public static void main(String[] args) throws NumberFormatException, IOException {
+		BufferedReader bf = new BufferedReader(new InputStreamReader(System.in));
+		int n = Integer.parseInt(bf.readLine());
+		int res = 0;
+		String[] strings = bf.readLine().split(" ");
+		for (int i = 0; i < n; i++) {
+			res = res ^ Integer.parseInt(strings[i]);
 		}
-		int temp = arr[0];
-		for (int i = 0; i < count; i++) {
-			temp = temp & arr[i];
-		}
-		System.out.println(temp);
+		System.out.println(res);
 	}
 }
