@@ -4,8 +4,8 @@ public class 斐波那契数列 {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		System.out.println(fib2(10));
-		System.out.println(fib3(10));
+//		System.out.println(fib2(10));
+		System.out.println(fib3(3));
 	}
 	
 	/*
@@ -57,6 +57,7 @@ public class 斐波那契数列 {
 	/*
 	 * 不使用数组,直接使用两个元素
 	 * 时间复杂度: O(N), 空间复杂度:O(1)
+	 * 1、1、2、3、5、8
 	 */
 	public static int fib3(int n) {
 		if (n <= 2) {
@@ -64,6 +65,11 @@ public class 斐波那契数列 {
 		}
 		int first = 1, second = 1;
 		for (int i = 3; i <= n; i++) {
+			/*
+			 * i = 3: second = 2, first = 1
+			 * i = 4: second = 3, first = 2
+			 * i = 5: second = 5
+			 */
 			second = first + second;
 			first = second - first;
 		}
