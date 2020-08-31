@@ -28,7 +28,6 @@ public class 面试题22_栈的压入与弹出序列 {
 		}
 		return stack.empty();
 	}
-
 }
 
 
