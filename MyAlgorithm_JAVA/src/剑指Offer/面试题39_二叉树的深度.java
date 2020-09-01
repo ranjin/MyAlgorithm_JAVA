@@ -31,6 +31,7 @@ public class 面试题39_二叉树的深度 {
     	if (root == null) {
 			return 0;
 		}
+    	
     	//初始化队列与tmp临时队列，并放入root
     	List<TreeNode> queue = new LinkedList<TreeNode>();
     	queue.add(root);
