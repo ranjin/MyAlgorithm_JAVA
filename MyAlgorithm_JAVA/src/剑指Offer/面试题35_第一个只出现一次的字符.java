@@ -19,7 +19,7 @@ public class 面试题35_第一个只出现一次的字符 {
 				return c;
 			}
 		}
-		return '';
+		return ' ';
 	}
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
