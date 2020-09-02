@@ -28,27 +28,20 @@ public class 面试题39_二叉树的深度 {
      * 
      */
     public int maxDepth2(TreeNode root) {
-    	if (root == null) {
-			return 0;
-		}
-    	
-    	//初始化队列与tmp临时队列，并放入root
-    	List<TreeNode> queue = new LinkedList<TreeNode>();
-    	queue.add(root);
-    	List<TreeNode> tmp = new LinkedList<TreeNode>();
-    	int res = 0;
-    	while (!queue.isEmpty()) {
-    		for (TreeNode node : queue) {
-				if (node.left != null) {
-					tmp.add(node.left);
-				}
-				if (node.right != null) {
-					tmp.add(node.right);
-				}
-			}
-    		queue = tmp;
-    		res++;
-		}
-    	return res;
+        if(root == null) return 0;
+        List<TreeNode> queue = new LinkedList<>();
+        queue.add(root);
+        List<TreeNode> tmp;
+        int res = 0;
+        while(!queue.isEmpty()) {
+            tmp = new LinkedList<>();
+            for(TreeNode node : queue) {
+                if(node.left != null) tmp.add(node.left);
+                if(node.right != null) tmp.add(node.right);
+            }
+            queue = tmp;
+            res++;
+        }
+        return res;
     }
 }
