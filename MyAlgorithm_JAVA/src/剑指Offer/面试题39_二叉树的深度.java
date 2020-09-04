@@ -39,6 +39,7 @@ public class 面试题39_二叉树的深度 {
                 if(node.left != null) tmp.add(node.left);
                 if(node.right != null) tmp.add(node.right);
             }
+            //每次遍历完queue 重新赋值queue res++
             queue = tmp;
             res++;
         }
