@@ -13,7 +13,7 @@ public class 最小的K个数 {
 	 * 使得比num[j]小的数都在j的左边，
 	 * 比num[j]大的数都在j的右边
 	 */
-	public static int partition() {
+	public static int partition(int[] nums, int lo) {
 		
 	}
 

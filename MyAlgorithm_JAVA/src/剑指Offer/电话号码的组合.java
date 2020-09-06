@@ -16,6 +16,9 @@ public class 电话号码的组合 {
 		}
     }
 
+    /*
+     * 
+     */
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
