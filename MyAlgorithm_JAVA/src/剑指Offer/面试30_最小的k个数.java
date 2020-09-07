@@ -58,10 +58,12 @@ public class 面试30_最小的k个数 {
 			if (i >= j) {
 				break;
 			}
+			//i和j交换
 			int temp = nums[i];
 			nums[i] = nums[j];
 			nums[j] = temp;
 		}
+		//与中枢值交换
 		//把基准值放到合适的位置
 		nums[low] = nums[j];
 		nums[j] = key;

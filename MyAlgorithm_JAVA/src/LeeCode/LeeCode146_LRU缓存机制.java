@@ -1,10 +1,8 @@
-package 剑指Offer;
+package LeeCode;
 
 import java.util.HashMap;
 
-import com.sun.org.apache.xalan.internal.xsltc.runtime.Node;
-
-public class 拆解LRU算法 {
+public class LeeCode146_LRU缓存机制 {
 	/*
 	 * 构建Node
 	 * 为什么需要在链表中同时存储key和val ? 
@@ -30,7 +28,7 @@ public class 拆解LRU算法 {
 		Node tail;
 		int size;	//链表元素数
 		
-		public DoubleList{
+		public DoubleList(){
 			//初始化双向链表的数据
 			head = new Node();
 			tail = new Node();
@@ -39,6 +37,13 @@ public class 拆解LRU算法 {
 			size = 0;
 		}
 		
+		/*
+		 * 双向链表的四个方法：
+		 * 1. 尾部添加元素，即为最近使用的
+		 * 2. 删除某个节点
+		 * 3. 删除表头节点
+		 * 4. 返回链表的size
+		 */
 		//在链表尾部添加节点x, 时间O(1)
 		public void addLast(Node x) {
 			//设置节点的前后驱
@@ -75,6 +80,7 @@ public class 拆解LRU算法 {
 	}
 	
 	public class LRUCache {
+		//声明 哈希表+ 双向链表 + 最大容量
 		private HashMap<Integer, Node> map;
 		private DoubleList cache;
 		
@@ -86,6 +92,13 @@ public class 拆解LRU算法 {
 			cache = new DoubleList();
 		}
 		
+		/*
+		 * 重要的几个API
+		 * 1. makeRecently ：删除节点且插入到表尾
+		 * 2. addRecently  ：插入到表尾
+		 * 3. deleteKey    ：两个容器中删除
+		 * 4. removeLeastRecently ：删除表头元素 并从两个容器中删除
+		 */
 		//将某个key提升为最近使用的
 		private void makeRecently(int key) {
 			Node x = map.get(key);
@@ -119,18 +132,19 @@ public class 拆解LRU算法 {
 		
 		//删除最久未使用的元素
 		private void removeLeastRecently() {
-			//链表头部的第一个元素就是最久未使用的
-			Node deleteNode = cache.removeFirst();
-			
-			//同时从map中删除它的key
+			//链表头部的第一个元素就是最久未使用的			
 			Node deletedNode = cache.removeFirst();
 			
+			//同时从map中删除它的key
 			int deleteKey = deletedNode.val;
-			
 			map.remove(deleteKey);
 		}
 		
-		//LRU算法的get方法
+		/*
+		 * 最主要的两个方法：
+		 * get: makeRecently
+		 * put: 如果容量够，插入到表尾，如果不够，先删除表头元素，然后插入到表尾
+		 */
 		public int get(int key) {
 			if (!map.containsKey(key)) {
 				return -1;
@@ -140,7 +154,7 @@ public class 拆解LRU算法 {
 			return map.get(key).val;
 		}
 		
-		//LRU算法的put方法
+		
 		public void put(int key, int val) {
 			if (map.containsKey(key)) {
 				//删除旧的数据
@@ -168,3 +182,31 @@ public class 拆解LRU算法 {
 	}
 
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
