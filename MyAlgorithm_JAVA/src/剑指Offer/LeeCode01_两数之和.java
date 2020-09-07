@@ -8,28 +8,7 @@ import java.util.Set;
 
 import com.sun.javafx.collections.MappingChange.Map;
 
-public class 两数之和 {
-
-	public int[] twoSum4(int[] sums, int target) {
-		if (sums.length == 0) {
-			return new int[] {-1, -1};
-		}
-		HashMap<Integer, Integer> map = new HashMap<Integer, Integer>();
-
-		for (int i = 0; i < sums.length; i++) {
-			//以值为key，索引为value
-			map.put(sums[i], i);
-		}
-		
-		int otherNo;
-		for (int i : sums) {
-			otherNo = target - i;
-			if (map.containsKey(otherNo) && map.get(i) != i) {
-				return new int[] {i, map.get(otherNo)};
-			}
-		}
-		return new int[] {-1, -1};
-	}
+public class LeeCode01_两数之和 {
 	/*
 	 * 解法1: 穷举，时间复杂度O(n^2), 空间复杂度O(1)
 	 */
@@ -44,15 +23,13 @@ public class 两数之和 {
 				}
 			}
 		}
-		return new int[] {0, 0};
+		return new int[] {-1, -1};
 	}
 	
 	/*
 	 * 通过哈希表减少时间复杂度
-	 * 时间复杂度为O(1), 空间复杂度O(N)
+	 * 时间复杂度为O(N), 空间复杂度O(N)
 	 */
-	
-	private HashMap<Integer, Integer>;
 	public int[] twoSum2(int[] sums, int target) {
 		int n = sums.length; 
 		
@@ -66,7 +43,7 @@ public class 两数之和 {
 			int other = target - sums[i];
 			//如果other存在且不是sums[i]本身
 			//[3, 3, 2, 5]
-			if (index.containsKey(other) && index.get(i) != i) {
+			if (index.containsKey(other) && index.get(other) != i) {
 				return new int[] {i, index.get(other)};
 			}
 		}
@@ -112,7 +89,7 @@ public class 两数之和 {
 	//对于频繁使用find方法的场景
 	public class TowSum3{
 		Set<Integer> sum = new HashSet<Integer>();
-		List<Integer> nums = new ArrayList<Integer>;
+		List<Integer> nums = new ArrayList<Integer>();
 		public void add(int number) {
 			//记录所有可能组成的和
 			for (int n : nums) {

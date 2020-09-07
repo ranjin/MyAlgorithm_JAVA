@@ -2,21 +2,28 @@ package 剑指Offer;
 
 import java.util.HashMap;
 
-public class 拆解LRU算法 {
+import com.sun.org.apache.xalan.internal.xsltc.runtime.Node;
 
-	//构建Node
+public class 拆解LRU算法 {
+	/*
+	 * 构建Node
+	 * 为什么需要在链表中同时存储key和val ? 
+	 * 因为在移除最近最常使用时，需要用deleteNode得到deletedKey
+	 */
 	public class Node{
-		//为什么需要在链表中同时存储key和val，因为在移除最近最常使用时，需要用deleteNode得到deletedKey
 		int val;
 		int key;
-		Node next;
 		Node prev;
+		Node next;
 	}
 	
-	//构建双向链表
-	//为什么要用双向链表: 因为我们需要删除操作。
-	//删除一个节点不光要得到该节点本身的指针，也需要操作其前驱节点的指针。
-	
+	/*
+	 * 构建双向链表
+	 * 为什么要用双向链表? 因为我们需要删除操作
+	 * 删除一个节点不光要得到该节点本身的指针，也需要操作其前驱节点的指针。
+	 * 
+	 * 靠近尾部的元素是最近使用的，越靠头的元素就是最久未使用的
+	 */
 	public class DoubleList{
 		//头尾节点
 		Node head;
