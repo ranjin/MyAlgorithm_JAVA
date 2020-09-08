@@ -15,10 +15,19 @@ public class 去除有序数组中的重复元素 {
 		int n = nums.length;
 		int slow = 0, fast = 1;
 		while (fast < n) {
+			/*
+			 * 如果不相等，将fast位置上的元素赋值给slow上
+			 * slow后移，fast后移
+			 * 
+			 * 如果相等，q后移
+			 */
 			if (nums[fast] != nums[slow]) {
 				slow++;
+				nums[slow] = nums[fast];
+				fast++;
+			}else {
+				fast++;
 			}
-			fast++;
 		}
 		//长度索引
 		return slow + 1;
