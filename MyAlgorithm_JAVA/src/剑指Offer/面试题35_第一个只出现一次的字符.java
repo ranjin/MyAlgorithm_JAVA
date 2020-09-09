@@ -11,6 +11,14 @@ public class 面试题35_第一个只出现一次的字符 {
 	public char firstUniqChar(String s) {
 		HashMap<Character, Boolean> dic = new HashMap<Character, Boolean>();
 		char[] sc = s.toCharArray();
+		/*
+		 * a	false 
+		 * b	true
+		 * c	false
+		 * d	true
+		 * e	true
+		 * f	false
+		 */
 		for (char c : sc) {
 			dic.put(c, !dic.containsKey(c));
 		}
