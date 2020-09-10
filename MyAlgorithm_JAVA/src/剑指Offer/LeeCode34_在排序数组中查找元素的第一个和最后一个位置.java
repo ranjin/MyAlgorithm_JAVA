@@ -6,12 +6,10 @@ public class LeeCode34_在排序数组中查找元素的第一个和最后一个
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		return lef
 	}
 
     public int[] searchRange(int[] nums, int target) {
     	return new int[] {leftBounds(nums, target), rightBounds(nums, target)};
-    	return leftBounds(nums, target) + leftBounds(nums, target)
     }
 	/*
 	 * 二分查找

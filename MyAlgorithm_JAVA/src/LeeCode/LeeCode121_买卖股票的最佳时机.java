@@ -14,8 +14,8 @@ public class LeeCode121_买卖股票的最佳时机 {
 			  dp_i_0 = Math.max(dp_i_0, dp_i_1 + prices[i]);
 			
 			  dp_i_1 = Math.max(dp_i_1, -prices[i]);
-			  }
-		  return dp_i_0;
+		}
+		 return dp_i_0;
 	  }
 
 }

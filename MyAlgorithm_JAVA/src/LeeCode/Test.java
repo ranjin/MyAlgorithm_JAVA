@@ -1,23 +1,64 @@
 package LeeCode;
 
+import java.util.HashMap;
+
 public class Test {
-	/*
-	 * [-2,1,-3,4,-1,2,1,-5,4]
-	 */
-    public static int maxSubArray(int[] nums) {
-    	if (nums.length == 0) {
-			return 0;
+	
+	public class TreeNode{
+		int val;
+		TreeNode left;
+		TreeNode right;
+		public TreeNode(int x) {
+			val = x;
 		}
-    	int res = 0;
-    	for (int i = 0; i < nums.length; i++) {
-			nums[i] += Math.max(nums[i-1], 0);
-			res = Math.max(res, nums[i]);
+	}
+	
+	private HashMap<Integer, Integer> map;
+	public TreeNode buildTree(int[] preorder, int[] inorder) {
+		int n = preorder.length;
+		map = new HashMap<Integer, Integer>();
+		for (int i = 0; i < inorder.length; i++) {
+			map.put(inorder[i], i);
 		}
-    	return res;
-    }
-    
-    public static void main(String[] args) {
-		int[] num = {-2,1};
-		System.out.println(maxSubArray(num));
+		return buildMyTree(preorder, inorder, 0, n-1, 0, n-1);
+	}
+	
+	public TreeNode buildMyTree(int[] preorder, int[] inorder, int preorder_left, int preorder_right, int inorder_left, int inorder_right) {
+		//根据前序遍历获取到根节点
+		int preorder_root = preorder_left;
+		
+		//在中序遍历中定位根节点 索引值
+		int inorder_root = map.get(preorder[preorder_root]);
+		
+		TreeNode root = new TreeNode(preorder[preorder_root]);
+		
+		
+		//左子树上节点数量
+		int size_left_subtree = inorder_root - inorder_left; 
+		
+		
+		root.left = buildMyTree(preorder, inorder, preorder_left + 1, preorder_left + size_left_subtree, inorder_left, inorder_left + inorder_root-1);
+		
+		root.right = buildMyTree(preorder, inorder, preorder_left + size_left_subtree + 1, preorder_right, inorder_root+1, inorder_right);
+		
+		return root;
 	}
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
