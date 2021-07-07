@@ -32,6 +32,10 @@ public class LeeCode05_最长回文子串 {
 		return res;
 	}
 	
+	public void name() {
+		
+	}
+	
 	//寻找最长回文串
 	public String palindrome(String s, int left, int right) {
 		int len = s.length();
