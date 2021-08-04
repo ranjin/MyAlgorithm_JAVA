@@ -1,5 +1,7 @@
 package LeeCode;
 
+
+Main
 public class LeeCode05_最长回文子串 {
 
 	public static void main(String[] args) {
