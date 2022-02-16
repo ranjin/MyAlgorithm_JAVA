@@ -1,3 +1,4 @@
+
 package 递归与回溯;
 
 /*
@@ -5,10 +6,10 @@ package 递归与回溯;
  * 每次只能移动一个盘子
  * 大的盘子只能放在小盘子下面
  */
-public class Hanoi {
+public class 汉诺塔 {
 
 	public static void main(String[] args) {
-		new Hanoi().hanoi(3, "A", "B", "C");
+		new 汉诺塔().hanoi(3, "A", "B", "C");
 	}
 	
 	/*
@@ -22,6 +23,7 @@ public class Hanoi {
 	 * 空间复杂度：O(N)
 	 */
 	void hanoi(int n, String A, String B, String C) {
+		// 递归基
 		if (n == 1) {
 			move(1, A, C);
 			return;

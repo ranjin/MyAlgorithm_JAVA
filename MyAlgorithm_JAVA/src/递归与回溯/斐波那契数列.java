@@ -1,21 +1,31 @@
 package 递归与回溯;
 
+import java.util.Iterator;
+
+/**
+ * 斐波那契数列：1、1、2、3、5、8、13、21、34、......
+ * F(1) = 1、F(1) = 2、F(n) = F(n-1) + F(n-2)(n>=3)
+ * @author ran
+ *
+ */
 public class 斐波那契数列 {
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-//		System.out.println(fib2(10));
 		System.out.println(fib3(3));
 	}
 	
 	/*
-	 * fib(n) = fib(n-1) + fib(n-2)
+	 * 递归方法 
+	 * 时间复杂度：2^n
+	 * 空间复杂度：O(n)
+	 * 
+	 * f(n) = f(n-1) + f(n-2)
 	 */
 	public static int fib0(int n) {
 		if (n <= 2) {
 			return 1;
 		}
-		return fib0(n-2) + fib0(n-2);
+		return fib0(n-1) + fib0(n-2);
 	}
 	
 	/*
@@ -75,5 +85,4 @@ public class 斐波那契数列 {
 		}
 		return second;
 	}
-
 }

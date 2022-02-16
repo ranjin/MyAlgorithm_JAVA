@@ -1,7 +1,6 @@
 package 递归与回溯;
 
-import java.util.Iterator;
-
+// 使用递归不是为了求得最优解，是为了简化解决问题的思路
 /**
  * 求1+2+3+4+...+(n-1)+n的和(n>0)
  * @author ran
