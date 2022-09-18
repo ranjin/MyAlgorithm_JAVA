@@ -18,7 +18,7 @@ public class _反转链表前N个节点 {
 		
 		public ListNode reverseN(ListNode head, int n) {
 			ListNode successor = null;
-			
+			ListNode
 			// base case: 反转一个元素，就是它本身，同时要记录后驱节点。
 			if (n == 1) {
 				// 记录第n+1个节点
