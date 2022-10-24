@@ -1,7 +1,5 @@
 package 动态规划;
 
-import java.util.Iterator;
-
 /**
  * 给你一个字符串 s，找到 s 中最长的回文子串。
  * 输入：s = "babad"
@@ -12,7 +10,9 @@ import java.util.Iterator;
  * 状态定义：定义dp[n][n]的二维数组，dp[i][j]表示s[i][j]是否为回文串，存储true、false
  * 初始状态：
  * 状态转移方程：
- * if
+ * if (j - i + 1 < = 2) {
+ * } else {
+ * }
  * 如果s[i][j]的长度小于等于2，即j-i+1 <= 2  dp[i][j] == s[i] == s[j]
  * 如果s[i][j]的长度大于2，即j-i+1 > 2, 如果s[i+1][j-1]为回文串且s[i] == s[j],则为回文串
  * 
