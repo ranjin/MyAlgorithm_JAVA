@@ -22,26 +22,27 @@ public class LeeCode05_最长回文子串 {
     	if (s == null) {
 			return null;
 		}
-    	char[] cs = s.toCharArray();
-    	if (cs.length == 0) {
+    	if (s.length() < 2) {
 			return s;
 		}
-    	// 最长回文子串的长度(最少是1)
+
+    	char[] cs = s.toCharArray();
+    	
+    	boolean dp[][] = new boolean[cs.length][cs.length];
+    	
     	int maxLen = 1;
-    	// 最长回文子串的开始索引
     	int begin = 0;
-    	boolean[][] dp = new boolean[cs.length][cs.length];
-    	// i: 从下到上
-    	// j: 从左到右
+    	
+    	// i从下到上，j从左到右
     	for (int i = cs.length - 1; i >= 0; i--) {
 			for (int j = i; j < cs.length; j++) {
 				int len = j - i + 1;
 				if (len <= 2) {
-					dp[i][j] = (cs[i] == cs[j]);
+					dp[i][j] = cs[i] == cs[j];
 				} else {
 					dp[i][j] = dp[i+1][j-1] && (cs[i] == cs[j]);
 				}
-				if (dp[i][j] && (maxLen < len)) {
+				if (maxLen < len && dp[i][j]) {
 					maxLen = len;
 					begin = i;
 				}
