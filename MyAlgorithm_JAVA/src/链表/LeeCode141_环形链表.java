@@ -15,6 +15,7 @@ public class LeeCode141_环形链表 {
 	public boolean hasCycle(ListNode head) {
 		ListNode fastNode = head;
 		ListNode slowNode = head;
+	
 		while (fastNode != null && fastNode.next != null) {
 			fastNode = fastNode.next.next;
 			slowNode = slowNode.next;
