@@ -1,7 +1,5 @@
 package 链表;
 
-import java.util.List;
-
 /**
  * 
  * 输入：l1 = [1,2,4], l2 = [1,3,4]
@@ -17,7 +15,7 @@ import java.util.List;
  *
  */
 
-public class LeeCode21_合并两个有序链表 {
+public class LeeCode21_合并两个有序的链表 {
 	public class ListNode {
 		int val;
 		ListNode next;

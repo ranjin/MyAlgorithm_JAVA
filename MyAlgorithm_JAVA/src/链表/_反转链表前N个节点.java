@@ -1,7 +1,5 @@
 package 链表;
 
-import 链表.LeeCode206_反转链表.ListNode;
-
 public class _反转链表前N个节点 {
 
 	public class ListNode {
@@ -12,6 +10,22 @@ public class _反转链表前N个节点 {
 			this.val = val;
 		}
 		
+		/**
+		 * 普通方法实现
+		 */
+		public ListNode reverseN(ListNode head, int n) {
+			
+			ListNode cur = new ListNode(-1);
+			ListNode pre = head;
+			ListNode t = pre.next;
+			
+			while (cur != null) {
+				pre.next = cur;
+				cur = pre;
+				pre = t;
+			}
+			return 
+		}
 		/**
 		 * 递归实现
 		 */

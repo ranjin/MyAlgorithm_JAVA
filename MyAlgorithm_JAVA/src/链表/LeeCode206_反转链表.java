@@ -1,9 +1,12 @@
 package 链表;
+
+import 链表.面试题16_反转链表.ListNode;
+
 /**
  * 给你单链表的头节点 head ，请你反转链表，并返回反转后的链表。
  * 输入：head = [1,2,3,4,5]
+ * 
  * 输出：[5,4,3,2,1]
- * @author ranjin
  *
  */
 public class LeeCode206_反转链表 {
@@ -21,10 +24,32 @@ public class LeeCode206_反转链表 {
 		}
 		
 		/**
+		 * 普通思路
+		 * 反转以a为头节点的
+		 */
+		public ListNode reverseList_normal(ListNode head) {
+			
+			
+			ListNode pre = head;
+			ListNode cur = new ListNode(0);
+			while (pre != null) {
+				ListNode t = pre.next;
+				pre.next = cur;
+				cur = pre;
+				pre = t;
+			}
+			return cur;
+		}
+		
+		/**
 		 * 递归思路
+		 * 函数含义：输入一个节点head，将以head为头节点的链表反转。并返回反转之后的头节点
 		 * 
 		 */
 		public ListNode reverseList(ListNode head) {
+			if (head.next == null) {
+				return head;
+			}
 			ListNode newHead = reverseList(head.next);
 			// 重点： 以【5、4、3、2、1】举例，那么就是4的next要指向5。而4是5的next。即：
 			head.next.next = head;

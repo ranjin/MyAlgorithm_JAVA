@@ -1,4 +1,4 @@
-package 剑指Offer;
+package 链表;
 
 public class 面试题16_反转链表 {
 
@@ -21,9 +21,4 @@ public class 面试题16_反转链表 {
 		}
 		return cur;
 	}
-	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-
-	}
-
 }
