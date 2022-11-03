@@ -1,6 +1,5 @@
 package 链表;
 
-import java.util.Iterator;
 
 /**
  * 给定链表的头结点head，每k个节点一组进行反转，返回修改后的链表

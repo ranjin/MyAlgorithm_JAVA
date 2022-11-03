@@ -9,7 +9,6 @@ public class 面试题16_反转链表 {
 			val = i;
 		}
 	}
-	
 	public ListNode reverseList(ListNode head) {
 		ListNode pre = head;
 		ListNode cur = new ListNode(0);

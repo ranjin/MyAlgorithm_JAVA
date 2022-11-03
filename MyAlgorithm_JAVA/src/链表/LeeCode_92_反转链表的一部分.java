@@ -1,8 +1,6 @@
 package 链表;
 
-import 链表._反转链表前N个节点.ListNode;
-
-public class 反转链表的一部分 {
+public class LeeCode_92_反转链表的一部分 {
 
 	/**
 	 * 给一个索引区间[m, n](索引从1开始)，仅仅反转区间中的链表元素
@@ -14,7 +12,6 @@ public class 反转链表的一部分 {
 		public ListNode(int val) {
 			this.val = val;
 		}
-		
 		ListNode reverseBetween(ListNode head, int m, int n) {
 			/**
 			 * base case：如果m = 1， 则相当于反转链表开头的n个元素
@@ -23,7 +20,6 @@ public class 反转链表的一部分 {
 				ListNode newHead = reverseN(head, n);
 				return newHead;
 			}
-			
 			// 前进到反转的起点触发base case
 			head.next = reverseBetween(head.next, m - 1, n - 1);
 			return head;

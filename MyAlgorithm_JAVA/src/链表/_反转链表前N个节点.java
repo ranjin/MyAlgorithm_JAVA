@@ -11,43 +11,23 @@ public class _反转链表前N个节点 {
 		}
 		
 		/**
-		 * 普通方法实现
-		 */
-		public ListNode reverseN(ListNode head, int n) {
-			
-			ListNode cur = new ListNode(-1);
-			ListNode pre = head;
-			ListNode t = pre.next;
-			
-			while (cur != null) {
-				pre.next = cur;
-				cur = pre;
-				pre = t;
-			}
-			return 
-		}
-		/**
 		 * 递归实现
+		 * 与反转整个链表不同的是，head节点在递归完成之后不一定会指向null，所以要记录后驱节点head.next;
 		 */
 		public ListNode reverseN(ListNode head, int n) {
+			// 后驱节点 
 			ListNode successor = null;
-			// base case: 反转一个元素，就是它本身，同时要记录后驱节点。
+			
+			// base case
 			if (n == 1) {
-				// 记录第n+1个节点
 				successor = head.next;
 				return head;
 			}
-			ListNode newHead = reverseN(head.next, n - 1);
-			head.next.next = head;
+			ListNode last = reverseN(head.next, n-1);
 			
-			// 记录successor(第n+1个节点)，反转之后将head连接上。
-			head.next =  successor;
-			return newHead;
+			head.next.next = head;
+			head.next = successor;
+			return last;
 		}
 	}
-	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-
-	}
-
 }
