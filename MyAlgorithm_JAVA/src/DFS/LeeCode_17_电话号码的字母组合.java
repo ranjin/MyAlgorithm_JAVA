@@ -35,7 +35,8 @@ public class LeeCode_17_电话号码的字母组合 {
      * 正在搜索第idx层
      */
 	private void dpf(int idx) {
-		// TODO Auto-generated method stub
+		// 先枚举这一层可以做的所有选择
+		
 		
 	}
 }
