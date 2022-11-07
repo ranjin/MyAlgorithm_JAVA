@@ -9,6 +9,9 @@ import java.util.HashMap;
  * 
  * 哈希表查找快，但是无序；链表插入删除快，到那时查找不快。综合考虑：采取哈希链表: LinkedHashMap
  *
+ * 步骤：
+ * 1. 构建Node、DoubleList
+ * 2. 
  */
 public class LeeCode146_LRU缓存机制 {
 	/*
@@ -162,7 +165,7 @@ public class LeeCode146_LRU缓存机制 {
 			if (!map.containsKey(key)) {
 				return -1;
 			}
-			//将该数据提升为最近使用的
+			// 将该数据提升为最近使用的
 			makeRecently(key);
 			return map.get(key).val;
 		}
