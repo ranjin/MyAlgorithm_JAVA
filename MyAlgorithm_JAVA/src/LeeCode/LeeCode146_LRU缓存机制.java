@@ -2,6 +2,14 @@ package LeeCode;
 
 import java.util.HashMap;
 
+/**
+ * 要求：
+ * 在cache中快速查找
+ * 在cache中快速插入和删除
+ * 
+ * 哈希表查找快，但是无序；链表插入删除快，到那时查找不快。综合考虑：采取哈希链表: LinkedHashMap
+ *
+ */
 public class LeeCode146_LRU缓存机制 {
 	/*
 	 * 构建Node
@@ -13,6 +21,10 @@ public class LeeCode146_LRU缓存机制 {
 		int key;
 		Node prev;
 		Node next;
+		public Node(int k, int v) {
+			this.key = k;
+			this.val = v;
+		}
 	}
 	
 	/*
@@ -30,8 +42,8 @@ public class LeeCode146_LRU缓存机制 {
 		
 		public DoubleList(){
 			//初始化双向链表的数据
-			head = new Node();
-			tail = new Node();
+			head = new Node(0, 0);
+			tail = new Node(0, 0);
 			head.next = tail;
 			tail.prev = head;
 			size = 0;
@@ -46,16 +58,16 @@ public class LeeCode146_LRU缓存机制 {
 		 */
 		//在链表尾部添加节点x, 时间O(1)
 		public void addLast(Node x) {
-			//设置节点的前后驱
+			// 设置新节点的前后驱
 			x.prev = tail.prev;
 			x.next = tail;
 			
-			//从尾部开始
 			tail.prev.next = x;
 			tail.prev = x;
+			size++;
 		}
 		
-		//删除链表中的x节点(x一定存在)
+		//删除链表中的x节点(x一定存在) 以x节点为中心
 		//由于是双向链表且给的目标Node节点，时间O(1)
 		public void remove(Node x) {
 			x.prev.next = x.next;
@@ -91,8 +103,8 @@ public class LeeCode146_LRU缓存机制 {
 			map = new HashMap<>();
 			cache = new DoubleList();
 		}
-		
-		/*
+		/* 
+		 * 假设左边是队头，右边是队尾。最近使用的在队尾部.
 		 * 重要的几个API
 		 * 1. makeRecently ：删除节点且插入到表尾
 		 * 2. addRecently  ：插入到表尾
@@ -112,11 +124,12 @@ public class LeeCode146_LRU缓存机制 {
 		
 		//添加最近使用的元素
 		private void addRecently(int key, int val) {
-			Node x = new Node();
+			Node x = new Node(key, val);
 			
 			//链表尾部就是最近使用的元素
 			cache.addLast(x);;
 			
+			// 别忘了在map中添加key的映射
 			map.put(key, x);
 		}
 		
@@ -173,14 +186,6 @@ public class LeeCode146_LRU缓存机制 {
 			addRecently(key, val);
 		}
 	}
-	
-
-	
-	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-
-	}
-
 }
 
 
