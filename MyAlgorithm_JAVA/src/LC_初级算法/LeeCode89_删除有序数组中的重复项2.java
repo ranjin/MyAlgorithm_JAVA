@@ -25,6 +25,7 @@ public class LeeCode89_删除有序数组中的重复项2 {
 				nums[slow] = nums[fast];
 				slow++;
 			}
+			
 			fast++;
 		}
     	return slow;
