@@ -8,10 +8,20 @@ public class 面试30_最小的k个数 {
 		
 	}
 	
+	
+	// 直接排序，然后取前几个小的
 	/*
 	 * 通过快排切分排好第k小的数(下标为k-1), 
 	 * 那么它左边的数就是比它小的另外k-1个数
 	 */
+	public static int[] getLeastNumbersT(int[] arr, int k) {
+        int[] resultArr = new int[k];
+        Arrays.sort(arr);
+        for (int i = 0; i < k; i++) {
+            resultArr[i] = arr[i];
+        }
+        return resultArr;
+	}
 	public static int[] getLeastNumbers(int[] arr, int k) {
 		if (arr.length == 0 || k == 0) {
 			return new int[0];
