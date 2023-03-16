@@ -1,17 +1,21 @@
 package 剑指Offer;
 
+/**
+ * 给定一个整数数组nums和一个整数目标值target，请在数组中找出和为目标值taget的那两个整数，并返回它们的数组下标。
+ * nums = [2, 7, 11, 15], taget = 9
+ * 数组[0, 1]
+ */
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-import com.sun.javafx.collections.MappingChange.Map;
-
 public class LeeCode01_两数之和 {
 	/*
 	 * 解法1: 穷举，时间复杂度O(n^2), 空间复杂度O(1)
 	 */
+	
 	public int[] twoSum(int[] sums, int target) {
 		if (sums.length == 0) {
 			return new int[] {0, 0};
@@ -32,19 +36,16 @@ public class LeeCode01_两数之和 {
 	 */
 	public int[] twoSum2(int[] sums, int target) {
 		int n = sums.length; 
-		
-		//构造一个哈希表：元素映射到相应的索引
-		HashMap<Integer, Integer> index = new HashMap<Integer, Integer>();
-		for (int i = 0; i < n; i++) {
-			index.put(sums[i], i);
+		// 构造哈希表：元素映射到对应的索引
+		HashMap<Integer, Integer> dataHashMap = new HashMap<Integer, Integer>();
+		for (int i = 0; i < sums.length; i++) {
+			dataHashMap.put(sums[i], i);	//元素映射到索引
 		}
 		
-		for (int i = 0; i < n; i++) {
-			int other = target - sums[i];
-			//如果other存在且不是sums[i]本身
-			//[3, 3, 2, 5]
-			if (index.containsKey(other) && index.get(other) != i) {
-				return new int[] {i, index.get(other)};
+		for (int i = 0; i < sums.length; i++) {
+			int otherNo = target - sums[i];
+			if (dataHashMap.containsKey(otherNo) && dataHashMap.get(otherNo) != i) {
+				return new int[] {i, dataHashMap.get(otherNo)};
 			}
 		}
 		return new int[] {-1, -1};

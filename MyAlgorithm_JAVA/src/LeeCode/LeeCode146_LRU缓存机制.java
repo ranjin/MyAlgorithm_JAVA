@@ -15,7 +15,7 @@ import java.util.HashMap;
  */
 public class LeeCode146_LRU缓存机制 {
 	/*
-	 * 构建Node
+	 * 1. 构建Node
 	 * 为什么需要在链表中同时存储key和val ? 
 	 * 因为在移除最近最常使用时，需要用deleteNode得到deletedKey
 	 */
@@ -31,7 +31,7 @@ public class LeeCode146_LRU缓存机制 {
 	}
 	
 	/*
-	 * 构建双向链表
+	 * 2. 构建双向链表
 	 * 为什么要用双向链表? 因为我们需要删除操作
 	 * 删除一个节点不光要得到该节点本身的指针，也需要操作其前驱节点的指针。
 	 * 
@@ -54,14 +54,15 @@ public class LeeCode146_LRU缓存机制 {
 		
 		/*
 		 * 双向链表的四个方法：
-		 * 1. 尾部添加元素，即为最近使用的
+		 * 1. 往尾部添加节点，(假设左边是队头，右边是队尾。最近使用的在队尾部.)
 		 * 2. 删除某个节点
 		 * 3. 删除表头节点
 		 * 4. 返回链表的size
 		 */
+		
 		//在链表尾部添加节点x, 时间O(1)
 		public void addLast(Node x) {
-			// 设置新节点的前后驱
+			// x节点在中间，设置新节点的前后驱
 			x.prev = tail.prev;
 			x.next = tail;
 			
@@ -97,6 +98,7 @@ public class LeeCode146_LRU缓存机制 {
 	public class LRUCache {
 		//声明 哈希表+ 双向链表 + 最大容量
 		private HashMap<Integer, Node> map;
+		
 		private DoubleList cache;
 		
 		//最大容量

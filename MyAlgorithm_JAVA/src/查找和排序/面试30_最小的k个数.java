@@ -1,4 +1,4 @@
-package 剑指Offer;
+package 查找和排序;
 
 import java.util.Arrays;
 
