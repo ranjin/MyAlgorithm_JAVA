@@ -7,12 +7,7 @@ package LC_初级算法;
  * 输出：5, nums = [1,1,2,2,3]
  *
  */
-
-
-//		  slow    		  		  fast 
-//[1,		1,		1,		1,		2,		2,		2,		3]
 public class LeeCode89_删除有序数组中的重复项2 {
-
     public int removeDuplicates(int[] nums) {
     	int n = nums.length;
     	if (n <= 2) {

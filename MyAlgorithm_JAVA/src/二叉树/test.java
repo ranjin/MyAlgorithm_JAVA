@@ -1,8 +1,5 @@
 package 二叉树;
 
-import java.util.ArrayList;
-import java.util.List;
-
 public class test {
 
 	public class TreeNode {
@@ -16,19 +13,34 @@ public class test {
 		}
 	}
 	
-	List<Integer> resultList = new ArrayList<Integer>();
-
-    public List<Integer> postorderTraversal(TreeNode root) {
-        if (root == null) {
-            return resultList;
-        }
-        
-        posterOrder(root);
-        return resultList;
+	// 广度优先
+	
+    public int minDepth(TreeNode root) {
+    	if (root == null) {
+			return 0;
+		}
+    	
+    	LinkedList<TreeNode> queue = new LinkedList<TreeNode>();
+    	LinkedList<TreeNode> tmpList;
+    	queue.add(root);
+    	int height = 1;	// 初始高度
+    	
+    	while (!queue.isEmpty()) {
+    		tmpList = new LinkedList<TreeNode>();
+			for (TreeNode treeNode : queue) {
+				if (treeNode.left == null && treeNode.right == null) {
+					return height;
+				}
+				if (treeNode.left != null) {
+					tmpList.add(treeNode.left);
+				}
+				if (treeNode.right != null) {
+					tmpList.add(treeNode.right);
+				}
+			}
+			queue = tmpList;
+			height++;
+		}
+    	return height;
     }
-    public void posterOrder(TreeNode root) {
-		posterOrder(root.left);
-		posterOrder(root.right);
-		resultList.add(root.val);
-	}
 }
