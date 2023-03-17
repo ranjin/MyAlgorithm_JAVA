@@ -18,10 +18,13 @@ public class 全排列 {
     	return res;
     }
     
+    // 路径：记录在track中
+    // 选择列表：nums中不存在于track中的那些元素
+    // 结束条件：nums中的所有元素都在track中出现
     public void backtrack(int[] nums, LinkedList<Integer> track) {
 		//触发结束条件
     	if (track.size() == nums.length) {
-    		res.add(new LinkedList<Integer>(track));
+    		res.add(track);
     		return;
 		}
     	

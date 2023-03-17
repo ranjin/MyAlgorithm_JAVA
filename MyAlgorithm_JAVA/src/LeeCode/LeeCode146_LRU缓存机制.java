@@ -10,7 +10,8 @@ import java.util.HashMap;
  * 哈希表查找快，但是无序；链表插入删除快，到那时查找不快。综合考虑：采取哈希链表: LinkedHashMap
  *
  * 步骤：
- * 1. 构建Node、DoubleList
+ * 1. 构建Node、
+ * 2. 构建DoubleList
  * 2. 
  */
 public class LeeCode146_LRU缓存机制 {
@@ -59,7 +60,6 @@ public class LeeCode146_LRU缓存机制 {
 		 * 3. 删除表头节点
 		 * 4. 返回链表的size
 		 */
-		
 		//在链表尾部添加节点x, 时间O(1)
 		public void addLast(Node x) {
 			// x节点在中间，设置新节点的前后驱
