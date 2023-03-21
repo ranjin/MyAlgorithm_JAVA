@@ -1,5 +1,11 @@
 package 链表;
 
+/**
+ * 思路：
+ * 使用一次遍历，假设节点P1向前移动k个节点，那么距离尾部为n - k。
+ * 此时，节点P2在头节点，P1与P2一起往前移动。当P2走到尾节点的时候，P1走了n - k步。刚好
+ *
+ */
 public class 返回链表倒数第k个节点 {
 	public class ListNode{
 		int val;
@@ -45,6 +51,5 @@ public class 返回链表倒数第k个节点 {
 			p2 = p2.next;
 		}
 		return p2;
-		
 	}
 }
