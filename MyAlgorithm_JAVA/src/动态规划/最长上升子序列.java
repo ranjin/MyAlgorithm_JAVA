@@ -8,8 +8,8 @@ package 动态规划;
  * 状态定义：
  * dp[i]是以nums[i]结尾的最长上升子序列的长度。
  * 
- * 初始值：
- * dp[0]：以nums[10]结尾的最长上升子序列的长度。所以dp[0] = 1
+ * 初始值：base case
+ * dp[0]：以nums[0]结尾的最长上升子序列的长度。所以dp[0] = 1
  */
 public class 最长上升子序列 {
 
@@ -19,6 +19,7 @@ public class 最长上升子序列 {
 		}
 		int[] dp = new int[nums.length];
 		int max = dp[0] = 1;
+		
 		for (int i = 0; i < dp.length; i++) {
 			// 每个的初始值
 			dp[i] = 1;
