@@ -39,7 +39,7 @@ public class leecode78_子集 {
 		// 前序位置，每个节点的值都是一个子集
     	res.add(new LinkedList<>(track));
     	
-    	// 回溯算法标准框架
+    	// 回溯算法标准框架：操作的是路径track!!!!!!!!
     	for (int i = start; i < nums.length; i++) {
 			// 做选择
     		track.addLast(nums[i]);
