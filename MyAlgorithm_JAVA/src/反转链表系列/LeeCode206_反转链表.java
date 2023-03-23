@@ -1,4 +1,4 @@
-package 链表;
+package 反转链表系列;
 
 /**
  * 给你单链表的头节点 head ，请你反转链表，并返回反转后的链表。
@@ -41,6 +41,8 @@ public class LeeCode206_反转链表 {
 		
 	    /**
 	     * 迭代实现反转整个链表
+	     * 递归算法，明确递归函数的定义
+	     * 输入一个节点head，将以【head为起点】的链表反转，并返回反转之后的头节点
 	     */
 		public ListNode reverse(ListNode head) {
 			// base case, 如果链表只有一个节点的时候，反转也是它自己，直接返回即可。

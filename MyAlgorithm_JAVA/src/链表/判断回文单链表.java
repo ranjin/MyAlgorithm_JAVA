@@ -18,42 +18,54 @@ public class 判断回文单链表 {
 			this.val = val;
 		}
 	}
+	/** 
+	 * 思路：
+	 * 1. 先通过双指针技巧找到链表中点
+	 * 2. 从slow开始反转后面的链表
+	 * 3. 比较
+	 */
 	public boolean isPalindrome(ListNode head) {
 		if (head == null) {
 			return true;
 		}
 		
-		ListNode
-		/**
-		 * a: 1、1、2、1
-		 * b: 1、2、1、1
-		 */
-		ListNode tmpNode = head;
-		ListNode newHead = reverse(tmpNode);
-		ListNode aNode = head, bNode = newHead;
-		while (aNode != null && bNode != null) {
-			if (aNode.val == bNode.val) {
-				aNode = aNode.next;
-				bNode = newHead.next;
-			} else {
+		ListNode slow = head, fast = head;
+		while (fast != null && fast.next != null) {
+			slow = slow.next;
+			fast = fast.next.next;
+		}
+		// 链表长度为奇数
+		if (fast != null) {
+			slow = slow.next;
+		}
+		
+		ListNode left = head;
+		ListNode right = reverse(slow);
+		
+		while (right != null) {
+			if (left.val != right.val) {
 				return false;
 			}
+			left = left.next;
+			right = right.next;
 		}
 		return true;
-	}
+	}	
 	
-	// 先反转单链表
+	// 反转整个链表
 	public ListNode reverse(ListNode head) {
-		if (head.next == null) {
+		if (head == null) {
 			return head;
 		}
-		ListNode last = reverse(head.next);
-		head.next.next = head;
-		head.next = null;
-		return last;
-	}
-	
+		ListNode pre = null, cur = head, nxt = cur;
 
-	
+		while (cur != null) {
+			nxt = cur.next;
+			cur.next = pre;
+			pre = cur;
+			cur = nxt;
+		}
+		return pre;
+	}
 	
 }
