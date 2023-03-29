@@ -12,7 +12,6 @@ package 动态规划;
  * dp[0]：以nums[0]结尾的最长上升子序列的长度。所以dp[0] = 1
  */
 public class 最长上升子序列 {
-
 	static int lengthOfLIS(int[] nums) {
 		if (nums == null || nums.length == 0) {
 			return 0;
@@ -25,13 +24,12 @@ public class 最长上升子序列 {
 			dp[i] = 1;
 			for (int j = 0; j < i; j++) {
 				if (nums[i] > nums[j]) {
+					// dp[i]表示以nums[i]为结尾的最长递增子序列的长度
 					dp[i] = Math.max(dp[i], dp[j] + 1);
 				}
 			}
 			max = Math.max(max, dp[i]);
 		}
 		return max;
-		
 	}
-	
 }

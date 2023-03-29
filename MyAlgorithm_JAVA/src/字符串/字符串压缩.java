@@ -1,4 +1,7 @@
 package 字符串;
+
+import java.util.Iterator;
+
 /**
  * 实现基本的字符串压缩功能。
  * 比如，字符串aabcccccaaa会变为a2b1c5a3。
@@ -11,25 +14,50 @@ package 字符串;
 public class 字符串压缩 {
 
     public String compressString(String S) {
+
     	if (S.length() == 0) {
 			return S;
 		}
-    	StringBuffer ans = new StringBuffer();
+
+    	StringBuffer res = new StringBuffer();
     	int count = 1;
-    	char ch = S.charAt(0);
-    	for (int i = 1; i < S.length(); i++) {
-			if (ch == S.charAt(i)) {
+    	char ss = S.charAt(0);
+    	for (int i = 0; i < S.length(); i++) {
+			if (ss == S.charAt(i)) {
 				count++;
 			} else {
-				ans.append(ch);
-				ans.append(count);
-				ch = S.charAt(i);
-;				count = 1;
+				res.append(ss);
+				res.append(count);
+				ss = S.charAt(i);
+				count = 1;
 			}
 		}
-    	ans.append(ch);
-    	ans.append(count);
-    	return ans.toString().length() >= S.length() ? S : ans.toString();
+		res.append(ss);
+		res.append(count);
+    	return res.length() < S.length() ? res.toString() : S; 
     }
 
 }
+
+
+
+
+//if (S.length() == 0) {
+//	return S;
+//}
+//StringBuffer ans = new StringBuffer();
+//int count = 1;
+//char ch = S.charAt(0);
+//for (int i = 1; i < S.length(); i++) {
+//	if (ch == S.charAt(i)) {
+//		count++;
+//	} else {
+//		ans.append(ch);
+//		ans.append(count);
+//		ch = S.charAt(i);
+//;				count = 1;
+//	}
+//}
+//ans.append(ch);
+//ans.append(count);
+//return ans.toString().length() >= S.length() ? S : ans.toString();

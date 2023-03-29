@@ -1,6 +1,7 @@
 package 递归与回溯;
 
-import java.util.Iterator;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * 斐波那契数列：1、1、2、3、5、8、13、21、34、......
@@ -28,42 +29,21 @@ public class 斐波那契数列 {
 		return fib0(n-1) + fib0(n-2);
 	}
 	
-	/*
-	 * 使用数组优化
+	/**
+	 * 备忘录
 	 */
-	int fib1(int n) {
-		if (n <= 2) {
-			return 1;
+	public static int fib4(int n) {
+		Map<Integer, Integer> map = new HashMap<>();
+		if (n <= 1) {
+			return n;
 		}
-		int[] array = new int[n+1];
-		array[2] = array[1] = 1;
-		return fib1(array, n);
+		if (map.containsKey(n)) {
+			return map.get(n);
+		}
+		int res = fib4(n - 1) + fib4(n - 2);
+		map.put(n, res);
+		return res;
 	}
-	
-	int fib1(int[] array, int n) {
-		if (array[n] == 0) {
-			array[n] = fib1(array, n-1) + fib1(array, n-2);
-		}
-		return array[n];
-	}
-	
-	/*
-	 * 使用【滚动数组】来优化：将数组中的两个元素相加然后替换其中的一个元素
-	 * 进一步优化：将取模运算转换成二进制的位运算, 使用与运算
-	 */
-	public static int fib2(int n) {
-		if (n <= 2) {
-			return 1;
-		}
-		int[] arr = new int[2];
-		arr[0] = arr[1] = 1;	//最开始的两个元素
-		for (int i = 3; i <= n; i++) {
-			//超出2了
-			arr[i & 1] = arr[(i-1) & 1] + arr[(i-2) & 1];
-		}
-		return arr[n & 1];
-	}
-	
 	/*
 	 * 不使用数组,直接使用两个元素
 	 * 时间复杂度: O(N), 空间复杂度:O(1)
