@@ -6,6 +6,8 @@ package 反转链表系列;
  * 
  * 输出：[5,4,3,2,1]
  *
+ *
+ * pre  cur  nxt
  */
 public class LeeCode206_反转链表 {
 	
@@ -46,7 +48,7 @@ public class LeeCode206_反转链表 {
 	     */
 		public ListNode reverse(ListNode head) {
 			// base case, 如果链表只有一个节点的时候，反转也是它自己，直接返回即可。
-			if (head.next == null) {
+			if (head == null || head.next == null) {
 				return head;
 			}
 			// 当链表递归反转之后，新的头节点是last，而之前的head变成了最后一个节点，别忘了链表的末尾要指向null
