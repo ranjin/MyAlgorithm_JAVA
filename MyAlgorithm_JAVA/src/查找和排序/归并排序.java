@@ -35,11 +35,11 @@ public class 归并排序 {
 		int li = 0;
 		int le = mid - begin;
 		
-		// 右边数组(基于Array)
+		// 右边数组(基于array)
 		int ri = mid;
 		int re = end;
 		
-		// Array的索引
+		// array的索引
 		int ai = begin;
 		
 		// 备份左边数组
