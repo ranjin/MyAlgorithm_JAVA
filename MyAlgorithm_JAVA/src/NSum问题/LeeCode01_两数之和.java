@@ -15,7 +15,6 @@ public class LeeCode01_两数之和 {
 	/*
 	 * 解法1: 穷举，时间复杂度O(n^2), 空间复杂度O(1)
 	 */
-	
 	public int[] twoSum(int[] sums, int target) {
 		if (sums.length == 0) {
 			return new int[] {0, 0};

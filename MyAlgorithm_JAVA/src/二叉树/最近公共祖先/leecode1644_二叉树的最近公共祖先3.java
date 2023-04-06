@@ -8,7 +8,6 @@ package 二叉树;
  * 
  */
 public class leecode1644_二叉树的最近公共祖先3 {
-
 	public class TreeNode{
 		int val;
 		TreeNode left;
@@ -17,6 +16,54 @@ public class leecode1644_二叉树的最近公共祖先3 {
 			val = x;
 		}
 	}
+
+	// p与q可能不在树中，所以需要遍历二叉树，采用后序遍历左右根
+	boolean foundP = false, foundQ = false;
+	public TreeNode lowestCommonAncestor(TreeNode root, TreeNode p, TreeNode q) {
+
+		TreeNode resNode = find(root, p.val, q.val);
+		if (!foundP || !foundQ) {
+			return null;
+		}
+		return resNode;
+	}
+
+	public TreeNode find(TreeNode root, int val1, int val2) {
+
+		if (root == null) {
+			return root;
+		}
+		// 
+		TreeNode left = find(root.left, val1, val2);
+		TreeNode right = find(root.right, val1, val2);
+
+
+		if (left != null && right != null) {
+			return root;
+		}
+
+		if (root.val == val1 || root.val == val2) {
+			if (root.val == val1) {
+				foundP = true;
+			}
+			if (root.val == val2) {
+				foundQ = true;
+			}
+		}
+
+		return left != null ? left : right;
+	}
+
+
+
+
+
+
+
+
+
+
+
 	boolean foundP = false, foundQ = false;
 
 	public TreeNode lowestCommonAncestor(TreeNode root, TreeNode p, TreeNode q) {
@@ -39,6 +86,7 @@ public class leecode1644_二叉树的最近公共祖先3 {
 			return root;
 		}
 		
+		// 只是多了一个判断的步骤
 		if (root.val == val1 || root.val == val2) {
 			// 找到了，记录一下
 			if (root.val == val1) {

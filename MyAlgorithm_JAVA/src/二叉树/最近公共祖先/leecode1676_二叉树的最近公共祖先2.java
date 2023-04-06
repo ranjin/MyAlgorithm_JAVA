@@ -45,6 +45,5 @@ public class leecode1676_二叉树的最近公共祖先2 {
 			return root;
 		}
 		return left != null ? left : right;
-		
 	}
 }
