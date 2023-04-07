@@ -3,11 +3,11 @@ package 查找和排序;
  * 归并排序其实就是二叉树的后序遍历
  * 由于归并排序总是平均分割子序列，所以最好、最坏、平均时间复杂度都是O(NlongN)。空间复杂度：O(N)
  * 属于稳定排序。
- * 
  */
 public class 归并排序 {
 	int[] leftArray;
 	int[] array;
+	
 	// 对[begin, end)范围内的元素进行归并排序
 	public void sort(int begin, int end) {
 		if (end - begin < 2) {
