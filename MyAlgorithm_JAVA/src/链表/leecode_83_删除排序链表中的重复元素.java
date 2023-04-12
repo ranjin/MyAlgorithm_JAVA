@@ -26,6 +26,9 @@ public class leecode_83_删除排序链表中的重复元素 {
 		}
 	}
     public ListNode deleteDuplicates(ListNode head) {
+		if (head == null || head.next == null) {
+			return head;
+		}
     	ListNode cur = head;
     	while (cur != null && cur.next != null) {
     		if (cur.val == cur.next.val) {
@@ -36,4 +39,24 @@ public class leecode_83_删除排序链表中的重复元素 {
 		}
     	return head;
     }
+
+	// 解法2: 快慢指针	
+	public ListNode deleteDuplicates2(ListNode head) {
+		if (head == null || head.next == null) {
+            return head;
+        }
+		ListNode slow = head;
+		ListNode fast = head.next;
+		while (fast != null) {
+			if (slow.val != fast.val) {
+				slow.next = fast;
+				slow = slow.next;
+			}
+			fast = fast.next;
+		}
+		//断开与后面重复元素的连接
+		slow.next = null;
+		return head;
+	}
+
 }

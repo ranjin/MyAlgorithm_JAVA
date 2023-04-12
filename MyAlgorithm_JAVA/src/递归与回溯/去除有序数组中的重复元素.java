@@ -19,7 +19,7 @@ public class 去除有序数组中的重复元素 {
 			 * 如果不相等，将fast位置上的元素赋值给slow上
 			 * slow后移，fast后移
 			 * 
-			 * 如果相等，q后移
+			 * 如果相等，fast后移
 			 */
 			if (nums[fast] != nums[slow]) {
 				slow++;
@@ -32,29 +32,6 @@ public class 去除有序数组中的重复元素 {
 		//长度索引
 		return slow + 1;
 	}
-	
-	
-	public class ListNode {
-		int val;
-		ListNode next;
-		ListNode(int x) {val = x;}
-	}
-	
-	public ListNode deleteDuplicates(ListNode head) {
-		ListNode slow = head;
-		ListNode fast = head.next;
-		while (fast != null) {
-			if (slow.val != fast.val) {
-				slow.next = fast;
-				slow = slow.next;
-			}
-			fast = fast.next;
-		}
-		//断开与后面重复元素的连接
-		slow.next = null;
-		return head;
-	}
-
 }
 
 
