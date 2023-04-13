@@ -19,6 +19,40 @@ public class leecode_二叉树的层次遍历 {
 		TreeNode left;
 		TreeNode right;
 	}
+
+
+	public List<List<Integer>> levelOrder(TreeNode root) {
+		LinkedList<List<Integer>> resultList = new LinkedList<List<Integer>>();
+		if (root == null) {
+			return resultList;
+		}
+		LinkedList<ListNode> queue = new LinkedList<ListNode>
+		queue.add(root);
+		
+		LinkedList<Integer> itemList = new LinkedList<Integer>
+		itemList.add(root.val);
+		queue.add(root);
+
+		LinkedList<TreeNode> temp;
+
+		while(!queue.isEmpty) {
+			LinkedList<Integer> innerItemList = new LinkedList<Integer>;
+			temp = new LinkedList<ListNode>;
+
+			for(TreeNode node: queue) {
+				if (node.left != null) {
+					temp.add(node.left);
+				}
+				if (node.right != null) {
+					temp.add(node.right);
+				}
+				innerItemList.add(node.val);
+			}
+			queue = temp;
+			resultList.add()
+		}
+
+    }
 	
     public List<List<Integer>> levelOrder(TreeNode root) {
     	LinkedList<List<Integer>> resultList = new LinkedList<List<Integer>>();

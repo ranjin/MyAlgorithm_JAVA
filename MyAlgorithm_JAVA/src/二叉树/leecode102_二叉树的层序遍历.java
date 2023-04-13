@@ -11,13 +11,20 @@ public class 二叉树的层序遍历 {
 		TreeNode left;
 		TreeNode right;
 	}
-	
-	
+	/**
+	 * Java中Queue队列的用法
+	 * 插入元素：offer()或者add()
+	 * 返回并且删除队首元素：remove()或者poll()
+	 * 返回并且不删除队首元素：element()或者peek()
+	 * 思路：
+	 * 从上到下遍历二叉树的每一层，每一层从左到右遍历每一个val
+	 */
 	public List<List<Integer>> levelOrder(TreeNode root) {
 		List<List<Integer>> res = new ArrayList<>();
 		if (root == null) {
 			return res;
 		}
+		// 创建队列,加入head元素
 		Queue<TreeNode> queue = new LinkedList<>();
 		queue.offer(root);
 		// 从上到下遍历二叉树的每一层
