@@ -34,6 +34,7 @@ public class 合并两个排序的链表 {
     	ListNode p = dummy;
     	ListNode p1 = list1, p2 = list2;
     	while (p1 != null && p2 != null) {
+			
         	if (p1.val < p2.val) {
     			p.next = p1;
     			p1 = p1.next;

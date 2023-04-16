@@ -111,4 +111,30 @@ public class 测试代码 {
 	// 		track.removeLast();
 	// 	}
 	// }
+
+	// 结果集
+	LinkedList<List<Integer>> res = new LinkedList<>();
+
+	// 记录路径
+	LinkedList<Integer> track = new LinkedList<>();
+
+	public List<List<Integer>> combine(int n, int k) {
+		backtrack(0, n, k);
+		return res;
+    }
+
+	public void backtrack(int start, int n, int k) {
+		if (k = track.length) {
+			res.add(new LinkedList<>(track));
+			return;
+		}
+
+		for (int i = start; i <= n; i++) {
+			track.addLast(nums[i]);
+
+			backtrack(start + 1, n, k);
+
+			track.removeLast();
+		}
+	}
 }

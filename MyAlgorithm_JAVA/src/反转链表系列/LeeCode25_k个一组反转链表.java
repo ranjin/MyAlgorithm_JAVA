@@ -26,26 +26,52 @@ public class LeeCode_k个一组反转链表 {
 			this.next = next;
 		}
 		
-	    public ListNode reverseKGroup(ListNode head, int k) {
+		/**
+		 * 方法一：
+		 * 1. 先反转以head开头的k个元素
+		 * 2. 将第 k + 1 个元素作为head递归调用reverseKGroup函数
+		 * 3. 将上述两个过程的结果连接起来
+		 * 4. base case: 如果最后的元素不足k个，就保持不变
+		 */
+	    public ListNode reverseKGroup1(ListNode head, int k) {
 	    	if (head == null) {
 				return null;
 			}
-	    	ListNode a, b;
-	    	a = b = head;
-	    	// 区间[a, b)包含k个待反转元素
-	    	for (int i = 0; i < k; i++) {
-				if (b == null) {
-					return head;
-				}
+			// 找到第k个节点对应的位置：下面的节点b
+			// 区间[a, b)包含k个待反转元素
+			ListNode a, b;
+			a = b = head;
+			for (int i = 0; i < k; i++) {
+				// 不足k个，不需要反转，base case
+				if (b == null) return head;
 				b = b.next;
 			}
 	    	// 反转前k个元素
 	    	ListNode newHead = reverse(a, b);
+			// 此时应该是a.next，而不是b.next，因为
 	    	a.next = reverseKGroup(b, k);
 	    	return newHead;
 	    }
 	}
-	
+
+	// 迭代反转a到b之间的节点
+	public ListNode reverse1(ListNode a, ListNode b) {
+		if (a == null) {
+			return a;
+		}
+		ListNode pre = null, cur = a, nxt = a;
+		while (cur != b) {
+			nxt = cur.next;
+			cur.next = pre;
+			pre = cur;
+			cur = nxt;
+		}
+		return pre;
+	}
+
+/**
+ * 以下为反转单链表代码
+ */
 //	// 反转以a为头节点的链表,即反转以a为头节点，以null为尾节点的
 //	public ListNode reverse(ListNode a) {
 //		if (a == null) {
@@ -60,22 +86,8 @@ public class LeeCode_k个一组反转链表 {
 //		}
 //		return pre;
 //	}
-	// 反转a到b之间的节点
-	public ListNode reverse(ListNode a, ListNode b) {
-		if (a == null) {
-			return a;
-		}
-		ListNode pre = null, cur = a, nxt = a;
-		while (cur != b) {
-			nxt = cur.next;
-			cur.next = pre;
-			pre = cur;
-			cur = nxt;
-		}
-		return pre;
-	}
-	
-//	// 递归思路
+
+// //	// 递归思路
 //	public ListNode reverse(ListNode a) {
 //		// base case: 链表只有一个节点的时候
 //		if (a.next == null) {
@@ -87,5 +99,4 @@ public class LeeCode_k个一组反转链表 {
 //		
 //		return newHead;
 //	}
-	
 }

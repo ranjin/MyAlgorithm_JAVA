@@ -12,35 +12,31 @@ public class test {
 			this.right = right;
 		}
 	}
-	
-	// 广度优先
-	
-    public int minDepth(TreeNode root) {
-    	if (root == null) {
-			return 0;
+	public List<Integer> largestValues(TreeNode root) {
+
+		List<List<Integer>> res = new ArrayList<>();
+		if (root == null) {
+			return res;
 		}
-    	
-    	LinkedList<TreeNode> queue = new LinkedList<TreeNode>();
-    	LinkedList<TreeNode> tmpList;
-    	queue.add(root);
-    	int height = 1;	// 初始高度
-    	
-    	while (!queue.isEmpty()) {
-    		tmpList = new LinkedList<TreeNode>();
-			for (TreeNode treeNode : queue) {
-				if (treeNode.left == null && treeNode.right == null) {
-					return height;
+
+		Queue<TreeNode> queue = new LinkedList<>();
+		queue.offer(root);
+		while(!queue.isEmpty()) {
+			int sz = queue.size();
+			List<Integer> levelVal = new ArrayList<>();
+			int max = Math.MIN_VALUE;
+			for (int i = 0; i < sz; i++) {
+				TreeNode cur = queue.poll();
+				max = Math.max(cur.val, max);
+				if (cur.left != null) {
+					queue.offer(cur.left);
 				}
-				if (treeNode.left != null) {
-					tmpList.add(treeNode.left);
-				}
-				if (treeNode.right != null) {
-					tmpList.add(treeNode.right);
+				if (cur.right != null) {
+					queue.offer(cur.right);
 				}
 			}
-			queue = tmpList;
-			height++;
+			res.add(max);
 		}
-    	return height;
+		return res;
     }
 }
