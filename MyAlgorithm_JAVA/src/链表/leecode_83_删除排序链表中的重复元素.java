@@ -42,11 +42,11 @@ public class leecode_83_删除排序链表中的重复元素 {
 
 	// 解法2: 快慢指针	
 	public ListNode deleteDuplicates2(ListNode head) {
-		if (head == null || head.next == null) {
+		if (head == null) {
             return head;
         }
 		ListNode slow = head;
-		ListNode fast = head.next;
+		ListNode fast = head;
 		while (fast != null) {
 			if (slow.val != fast.val) {
 				slow.next = fast;
@@ -58,5 +58,4 @@ public class leecode_83_删除排序链表中的重复元素 {
 		slow.next = null;
 		return head;
 	}
-
 }

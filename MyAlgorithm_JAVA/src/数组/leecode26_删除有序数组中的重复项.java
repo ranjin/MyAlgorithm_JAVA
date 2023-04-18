@@ -12,22 +12,22 @@ package LC_初级算法;
  3. 直至fast 超过数组大小
  */
 
-
-
 public class leecode_26_删除有序数组中的重复项 {
 	public int removeDuplicates(int[] nums) {
+
+		if (nums.length == 0) {
+			return 0;
+		}
 		int slow = 0;
-		int fast = 1;
-		int n = nums.length;
-		
-		while (fast < n) {
-			if (nums[slow] == nums[fast]) {
-				fast++;
-			} else {
-				nums[slow + 1] = nums[fast];
+		int fast = 0;
+
+		while (fast < nums.length) {
+			if (nums[slow] != nums[fast]) {
 				slow++;
-				fast++;
+				// 维护nums[0...slow]无重复
+				nums[slow] = nums[fast];
 			}
+			fast++;
 		}
 		return slow + 1;
 	}

@@ -12,22 +12,16 @@ public class LeeCode_19_删除链表的倒数第K个节点 {
 	public class ListNode{
 		int val;
 		ListNode next;
-		public ListNode(int val) {
-			this.val = val;
-		}
-		public ListNode(int val, ListNode next) {
-			this.val = val;
-			this.next = next;
-		}
 	}
 	
 	public ListNode removeNthFromEnd(ListNode head, int n) {
 		// 虚拟头节点
+		// 由于需要找倒数第n + 1个节点，所以有空指针的情况，这里需要用到虚拟节点
 		ListNode dummy = new ListNode(-1);
 		dummy.next = head;
 		ListNode p = dummy;
 		// 要想删除倒数第N个，需要先找到倒数第N+1个节点
-		ListNode kNode = getKthFromEnd(head, n+1);
+		ListNode kNode = getKthFromEnd(dummy, n+1);
 		
 		// 删除倒数第N个节点
 		kNode.next = kNode.next.next;

@@ -1,6 +1,10 @@
 package 链表;
 
 /**
+ * a1 - a2 - c1 - c2
+ * b1 - b2 - b3 - c1 - c2
+ * a1 - a2 - c1 - c2 - b1 - b2 - b3 - c1 - c2
+ * b1 - b2 - b3 - c1 - c2 - a1 - a2 - c1 - c2
  * 给定两个链表的头节点，这两个链表可能存在相交
  * 如果相交，返回相交的那个节点，如果没相交，返回null
  * 思路：
@@ -11,15 +15,7 @@ public class LeeCode_160_两个链表是否相交 {
 	public class ListNode{
 		int val;
 		ListNode next;
-		public ListNode(int val) {
-			this.val = val;
-		}
-		public ListNode(int val, ListNode next) {
-			this.val = val;
-			this.next = next;
-		}
 	}
-	
 	ListNode getIntersectionNode(ListNode headA, ListNode headB) {
 		ListNode p1 = headA;
 		ListNode p2 = headA;
