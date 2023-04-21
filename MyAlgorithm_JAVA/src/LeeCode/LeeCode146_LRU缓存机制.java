@@ -3,34 +3,39 @@ package LeeCode;
 import java.util.HashMap;
 
 /**
- * 要求：
- * 在cache中快速查找
- * 在cache中快速插入和删除
+ * LRU采用哈希表 + 双向链表的形式 - 哈希链表
  * 
- * 哈希表查找快，但是无序；链表插入删除快，到那时查找不快。综合考虑：采取哈希链表: LinkedHashMap
- *
  * 步骤：
+ * 
  * 1. 构建Node、
  * 2. 构建DoubleList
- * 2. 
- */
+ * 3. 新建链表相关方法：
+ * 提示: 每次默认从链表尾部添加元素，所以将尾部看作是最近使用元素，而头部就是最久未使用元素
+ * (1). 添加元素到链表尾部: addLast(Node x)
+ * (2). 删除链表中第一个节点: removeFirst()
+ * (3). 删除指定节点: remove()
+ * (4). 返回链表size
+ * 
+ * 方法定义：
+ * 
+ * 1. 将某个key提升为最近使用元素:makeRecently(key)
+ * 2. 添加最近使用元素: addRecently(int key, int val);
+ * 3. 删除某一个key: deleteKey(int key);
+ * 4. 删除久未使用元素: deleteLeastRecently;
+ * 
+ * LRU方法：
+ * put;
+ * get;
+ */       
 public class LeeCode146_LRU缓存机制 {
-	/*
-	 * 1. 构建Node
-	 * 为什么需要在链表中同时存储key和val ? 
-	 * 因为在移除最近最常使用时，需要用deleteNode得到deletedKey
-	 */
-	public class Node{
+	// Node节点
+	public class Node {
 		int val;
 		int key;
 		Node prev;
 		Node next;
-		public Node(int k, int v) {
-			this.key = k;
-			this.val = v;
-		}
 	}
-	
+
 	/*
 	 * 2. 构建双向链表
 	 * 为什么要用双向链表? 因为我们需要删除操作
