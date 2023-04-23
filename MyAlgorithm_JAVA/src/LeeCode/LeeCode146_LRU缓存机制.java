@@ -65,7 +65,11 @@ public class LeeCode146_LRU缓存机制 {
 		 * 3. 删除表头节点
 		 * 4. 返回链表的size
 		 */
-		//在链表尾部添加节点x, 时间O(1)
+		//在链表尾部添加节点x, 时间O(1): 左下 - 右上 - 左上 - 右下
+
+		// node1  -> x   ->  tail
+		// node1  <- x   <-  tail
+
 		public void addLast(Node x) {
 			// x节点在中间，设置新节点的前后驱
 			x.prev = tail.prev;

@@ -1,34 +1,38 @@
 
+public class Node {
+	int key;
+	int val;
+	Node prev;
+	Node next;
+}
+
+public class DoubleList {
+	int cap;
+	Node head;
+	Node tail;
+	public DoubleList (int capacity) {
+		this.cap = capacity;
+		this.head = new Node(0, 0);
+		this.tail = new Node(0, 0);
+	}
+}
+
+
+// 哈希表 + 双向链表
 public class LRUCache {
-
-	
-	public class Node {
-		int key;
-		int val;
-		Node prev;
-		Node next;
-	}
-
-	public class DoubleList{
-
-		Node head;
-		Node tail;
-		int size;
-		public DoubleList(){
-			head = new Node(0, 0);
-			tail = new Node(0, 0);
-			size = 0
-		}
-	}
+	HashMap<Integer, Node> map;
+	DoubleList cache;
 
 	/**
-	 * head -> tail
-	 * head -> x -> tail
-	 * 队尾为最近使用，队头为久未使用
+	 * 链表： 表尾为最近使用元素，表头为久未使用元素
+	 * 链表方法：
+	 * 1. 
 	 */
-
+	// 表尾添加元素
+	// node1 -> tail
+	// node1 -> x -> tail
+	// node1 <- x <- tail
 	public void addLast(Node x) {
-		// 队尾添加元素
 		x.prev = tail.prev;
 		x.next = tail;
 		tail.prev.next = x;
@@ -36,87 +40,84 @@ public class LRUCache {
 		size++;
 	}
 
-	/**
-	 * head -> x -> tail
-	 * head -> tail
-	 */
 	// 删除指定元素
+	// node1 -> x -> node2
+	// node2 <- x <- node1
 	public void remove(Node x) {
 		x.prev.next = x.next;
 		x.next.prev = x.prev;
+		size--;
 	}
 
-	// 删除链表首个元素并返回
-	public void removeFirst(){
-		//
+	// 删除表头元素，即删除久未使用元素
+	public Node removeFirst() {
 		if (head.next == null) {
-			return;	
+			return null;
 		}
-		Node x = head.next;
-		remove(x);
-		return x;
+		Node first = head.next;
+		remove(first);
+		return first;
 	}
 
-	public int size(){
+	// 链表长度
+	public int size() {
 		return size;
 	}
 
-	public class LRUCach {
-		HashMap<Integer, Node> map;
-		DoubleList cache;
-		int cap;
-		public LRUCach(int capacity){
-			map = new HashMap<>();
-			cache = new DoubleList();
-			this.cap = capacity;
-		}
 
-		// 四个方法
-		public void makeRecently(int key){
-			Node x = map.get(key);
-			cache.remove(x);
-			cache.addLast(x);
-		}
+	
+	// 哈希链表方法：
+	// 将某个key提升为最近使用元素
+	public void makeRecently(int key) {
+		Node x = map.getKey(key);
 
-		public void addRecently(int key, int val) {
-			Node node = new Node(key, val);
-			cache.addLast(node);
-			map.put(key);
-		}
-
-		public void deleteKey(int key) {
-			Node x = map.get(key);
-			cache.remove(x);
-			map.remove(key);
-		}
-
-		// 删除链表头部元素
-		public void removeLeastRecently(){
-			Node x = cache.removeFirst();
-			map.remove(x.val);
-		}
-
-
-		// 
-		public void get(int key) {
-			if (!map.containsKey(key)) {
-				return -1;
-			}
-			makeRecently(key);
-		}
-
-
-		public void put(int key, int val){
-			if(map.containsKey(key)) {
-				deleteKey(key);
-			} else {
-				// 不包含
-				if (cap == cache.size()) {
-					removeLeastRecently();
-				}
-			}
-			addRecently(key, val);
-		}
+		cache.remove(x);
+		cache.addLast(x);
 	}
 
+	public void addRecently(int key, int val) {
+		Node x = new Node(key, val);
+
+		cache.addLast(x);
+		map.put(key, x);
+	}
+
+	public void deleteKey(int key) {
+		Node x = map.getKey(key);
+		cache.remove(x);
+		map.remove(key);
+	}
+
+	// 删除久未使用元素
+	public deleteLeastRecently() {
+		Node x = cache.removeFirst();
+		map.remove(x.val);
+	}
+
+
+	public int get(int key) {
+		if (!map.containsKey(key)) {
+			return -1;
+		}
+		makeRecently(key);
+		return map.getKey(key).val;
+	}
+
+
+	public void put(int key, int val) {
+		// 如果map中存在与key值相同的
+		if (!map.containsKey(key)){
+			// 删除旧值
+			deleteKey(key);
+		}
+
+		if (cap = cache.size()) {
+			// 删除久未使用元素
+			deleteLeastRecently()
+		}
+
+		addRecently(key, val);
+		Node x = new Node(key, val);
+
+	}
 }
