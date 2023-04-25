@@ -6,6 +6,7 @@ package 反转链表系列;
  * 输出：[5,4,3,2,1]
  */
 public class LeeCode206_反转链表 {
+
 	public class ListNode {
 		int val;
 		ListNode next;

@@ -1,37 +1,32 @@
 
 public class Solution {
-    int val;
-    ListNode next;
-    ListNode() {}
-    ListNode(int val) {
-        this.val = val;
-    }
-    ListNode(int val, ListNode next) {
-        this.val = val;
-        this.next = next;
-    }
-    // 反转链表区间：以head为头节点，区间[left, right]之间元素
-    public ListNode reverseBetween(ListNode head, int left, int right) {
 
-        // base case: left为1， 反转链表的前right个元素
+    public class ListNode {
+        int val;
+        ListNode next;
+    }
+
+    // 反转链表的一部分
+    public ListNode reverseBetween(ListNode head, int left, int right) {
+        if (head == null) {
+            return head;
+        }
+
         if (left == 1) {
-            ListNode newHead = reverseK(head, right);
-            return newHead;
+            return reverseN(ListNode head, n);
         }
         head.next = reverseBetween(head.next, left - 1, right - 1);
         return head;
     }
 
-    // 反转链表的前N个元素
-    public ListNode reverseK(ListNode head, int n) {
-        // 后驱节点
-        ListNode successor = null;
-        // 与反转整个链表类似
+    // 反转链表前N个节点
+    ListNode successor = null;
+    public ListNode reverseN(ListNode head, int n) {
         if (n == 1) {
             successor = head.next;
             return head;
         }
-        ListNode last = reverseK(head.next,  n -1);
+        ListNode last = reverseN(head.next, n - 1);
         head.next.next = head;
         head.next = successor;
         return last;

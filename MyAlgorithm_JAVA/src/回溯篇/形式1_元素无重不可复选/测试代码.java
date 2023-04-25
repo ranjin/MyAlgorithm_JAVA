@@ -4,6 +4,45 @@ import java.util.List;
 
 public class 测试代码 {
 
+	List<List<Integer>> res = new LinkedList<>()
+
+	// 记录回溯的递归路径
+	LinkedList<Integer> track = new LinkedList<>();
+
+	// track中的元素会被标记为true
+	boolean[] used;
+
+	// 全排列
+	public List<List<Integer>> permute(int[] nums) {
+		used = new boolean[nums.length];
+		backtrack(nums);
+		return res;
+    }
+
+	// 回溯算法
+	public void backtrack(int[] nums) {
+		// base case: 到达叶子节点
+		if (track.size() == nums.length) {
+			res.add(new LinkedList<>(track));
+			return;
+		}
+
+		for (int i = 0; i < nums.length; i++) {
+			// 已经存在track中的元素，不能重复选择
+			if (nums[i] == true) {
+				continue;
+			}
+			// 做选择
+			used[i] = true;
+			track.addLast(nums[i]);
+
+			// 进入下一层回溯树
+			backtrack(nums);
+
+			// 取消选择
+			track.removeLast();
+		}
+	}
 	// // 结果集
 	// LinkedList<List<Integer>> res = new LinkedList<>();
 

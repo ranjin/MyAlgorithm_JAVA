@@ -1,8 +1,8 @@
 package 数组;
 
+import java.util.LinkedList;
 
 public class testDemo {
-
 	public static int[] mergeTwoArr(int[] nums1, int[] nums2) {
 		int l1 = nums1.length, l2 = nums2.length;
 		int[] resultArr = new int[l1 + l2];
