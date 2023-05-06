@@ -1,9 +1,9 @@
-package 二叉树;
+package 二叉树.构造篇;
 
 import java.util.HashMap;
 import java.util.Map;
 
-public class LeeCode105_从前序与中序遍历序列构造二叉树 {
+public class leecode105_从前序与中序遍历序列构造二叉树 {
 
 	public class TreeNode{
 		int val;
@@ -51,7 +51,7 @@ public class LeeCode105_从前序与中序遍历序列构造二叉树 {
 		
 		//先把根节点建立起来
 		TreeNode root = new TreeNode(preorder[preorder_root]);
-		
+
 		//得到左子树中的节点数目
 		int size_left_subtree = inorder_root - inorder_left;
 		

@@ -1,4 +1,4 @@
-
+package 链表;
 /**
  * 请你将两个数相加，并以相同形式返回一个表示和的链表。
  * 输入：l1 = [2,4,3], l2 = [5,6,4]
@@ -8,11 +8,14 @@
  * 输入：l1 = [9,9,9,9,9,9,9], l2 = [9,9,9,9]
  * 输出：[8,9,9,9,0,0,0,1]
  */
-class Solution {
+class leecode2_两数相加 {
 
     class ListNode {
-        int val;
+		int val;
         ListNode next;
+        public ListNode(int val) {
+        	this.val = val;
+		}
     }
 
     public ListNode addTwoNumbers(ListNode l1, ListNode l2) {

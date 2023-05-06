@@ -10,7 +10,7 @@ public class Test_01 {
 	public static String addBinary(String a, String b) {
         // 先把输入的这两个二进制串反转，低位放在前面，方便处理进位
         a = new StringBuilder(a).reverse().toString();
-        b = new StringBuilder(a).reverse().toString();
+        b = new StringBuilder(b).reverse().toString();
 
         // 存储结果
         StringBuilder sb = new StringBuilder();

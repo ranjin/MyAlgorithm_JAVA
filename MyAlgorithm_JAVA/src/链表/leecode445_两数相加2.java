@@ -1,3 +1,7 @@
+package 链表;
+
+import java.util.Stack;
+
 /**
  * leecode2的进阶，此时会想到需要先反转链表
  * 
@@ -8,12 +12,15 @@
  * 输出：[8,0,7]
  */
 
-public class ListNode {
-    int val;
+class ListNode {
+    public ListNode(int val) {
+    	this.val = val;
+	}
+	int val;
     ListNode next;
 }
 
-class Solution {
+class leecode445_两数相加2 {
     // 解法1: 采用反转链表的方式
     public ListNode addTwoNumbers_01(ListNode l1, ListNode l2) {
         ListNode list1 = reverse(l1);
@@ -63,7 +70,7 @@ class Solution {
         }
         ListNode pre = null, cur = head, nxt = head;
         while (cur != null) {
-            nxt = cur.nxt;
+            nxt = cur.next;
             cur.next = pre;
             pre = cur;
             cur = nxt;
@@ -73,6 +80,7 @@ class Solution {
 
     // 解法2: 利用栈：先进后出
     public ListNode addTwoNumbers_02(ListNode l1, ListNode l2) {
+    	ListNode dummy = new ListNode(-1);
         Stack<Integer> stack1 = new Stack<>();
         Stack<Integer> stack2 = new Stack<>();
 
