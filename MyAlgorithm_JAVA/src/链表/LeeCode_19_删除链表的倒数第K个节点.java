@@ -12,6 +12,9 @@ public class LeeCode_19_删除链表的倒数第K个节点 {
 	public class ListNode{
 		int val;
 		ListNode next;
+		public ListNode(int val) {
+			this.val = val;
+		}
 	}
 	
 	public ListNode removeNthFromEnd(ListNode head, int n) {
@@ -29,8 +32,6 @@ public class LeeCode_19_删除链表的倒数第K个节点 {
 	
 	// 让p1先走k步，然后同时走,当p1走完，自然p2的位置就是倒数第k个位置
 	public ListNode getKthFromEnd(ListNode head, int k) {
-
-
 		ListNode p1 = head;
 		for (int i = 0; i < k; i++) {
 			p1 = p1.next;
@@ -42,18 +43,4 @@ public class LeeCode_19_删除链表的倒数第K个节点 {
 		}
 		return p2;
 	}
-
-	public ListNode getKthFromEnd(ListNode head, int k) {
-		ListNode p1 = head;
-		for (int i = 0; i < k; i++) {
-			p1 = p1.next;
-		} 
-		ListNode p2 = head;
-		while(p1 != null) {
-			p1 = p1.next;
-			p2 = p2.next;
-		}
-		return p2;
-	}
-	
 }

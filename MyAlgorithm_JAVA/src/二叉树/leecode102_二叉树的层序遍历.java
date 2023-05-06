@@ -5,7 +5,7 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Queue;
 
-public class 二叉树的层序遍历 {
+public class leecode102_二叉树的层序遍历 {
 	public class TreeNode{
 		int val;
 		TreeNode left;
