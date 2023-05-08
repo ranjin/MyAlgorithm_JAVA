@@ -17,7 +17,7 @@ public class leecode516_最长回文子序列 {
     public int longestPalindromeSubseq(String s) {
         int n = s.length();
         
-        // dp定义：在子串s[i][j]中，最长回文子序列的长度为dp[i][j]
+        // dp定义：dp[i][j]表示子串s[i...j]的最长回文子序列的长度。
         // base case: i == j时，dp[i][j]为1
         // 状态转移方程：
         // dp数组全部初始化为0

@@ -1,5 +1,10 @@
 package 二叉树;
 
+import java.util.ArrayList;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Queue;
+
 public class test {
 
 	public class TreeNode {
@@ -12,31 +17,20 @@ public class test {
 			this.right = right;
 		}
 	}
-	// 从上到下遍历每一层节点
-	// 从左到右遍历每一行的节点
-	/**
-	 *  			1
-	 *  		2		3
-	 *       4    5   6   7
-	 */
+	
 	public List<List<Integer>> levelOrder(TreeNode root) {
-		List<List<Integer>> result = new ArrayList<>();
-
-		if (root == null) {
-			return result;
-		}
-
+		List<List<Integer>> res = new LinkedList<>();
+		
 		Queue<TreeNode> queue = new LinkedList<>();
-
+		
+		if (root == null) {
+			return res;
+		}
 		queue.offer(root);
-
-		// 从上到下遍历二叉树的每一层
-
-		while(!queue.isEmpty()) {
+		
+		while (!queue.isEmpty()) {
 			int sz = queue.size();
-			List<Integer> level = new ArrayList<>();
-
-			// 从左到右遍历每一层的节点
+			List<Integer> tmpList = new ArrayList<>();
 			for (int i = 0; i < sz; i++) {
 				TreeNode cur = queue.poll();
 				if (cur.left != null) {
@@ -45,10 +39,10 @@ public class test {
 				if (cur.right != null) {
 					queue.offer(cur.right);
 				}
-				level.add(cur.val);
+				tmpList.add(cur.val);
 			}
-			result.add(level);
+			res.add(tmpList);
 		}
-		return result;
+		return res;
 	}
 }

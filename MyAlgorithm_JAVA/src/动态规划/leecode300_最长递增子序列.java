@@ -1,5 +1,7 @@
 package 动态规划;
 
+import java.util.Arrays;
+
 //最长上升/递增子序列 Longest Increasing Subsequence: LIS
 /**
  * 给定一个无序的整数序列，求出它最长上升子序列的长度
@@ -26,7 +28,7 @@ package 动态规划;
  * dp:     1	   2       2       3       2       3
  * 
  */
-public class Solution {
+public class leecode300_最长递增子序列 {
 	public int lengthOfLIS(int[] nums) {
 		// 一维dp数组定义
 		int[] dp = new int[nums.length];
@@ -42,7 +44,7 @@ public class Solution {
 		for (int i = 0; i < nums.length; i++) {
 			for (int j = 0; j < i; j++) {
 				if (nums[i] > nums[j]) {
-					dp[i] = Math.max(dp[i] + dp[j] + 1);
+					dp[i] = Math.max(dp[i], dp[j] + 1);
 				}
 			}
 		}
