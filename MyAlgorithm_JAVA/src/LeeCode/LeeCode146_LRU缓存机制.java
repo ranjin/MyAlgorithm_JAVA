@@ -2,9 +2,13 @@ package LeeCode;
 
 import java.util.HashMap;
 
+import 单调栈.leecode1019_链表中的下一个更大节点.ListNode;
+
 /**
  * LRU采用哈希表 + 双向链表的形式 - 哈希链表
  * 哈希表查找快，链表插入删除快
+ * 为什么是双向链表？
+ * 因为我们需要删除操作，删除一个节点我们如果直到了前驱与后驱节点，那么可以保证时间复杂度为O(1)
  * 
  * 步骤：
  * 
@@ -35,6 +39,10 @@ public class LeeCode146_LRU缓存机制 {
 		int key;
 		Node prev;
 		Node next;
+		public Node(int val, int key) {
+			this.val = val;
+			this.key = key;
+		}
 	}
 
 	/*
@@ -60,6 +68,7 @@ public class LeeCode146_LRU缓存机制 {
 		}
 		
 		/*
+		 * 队头为久未使用元素, 队尾为最近使用元素
 		 * 双向链表的四个方法：
 		 * 1. 往尾部添加节点，(假设左边是队头，右边是队尾。最近使用的在队尾部.)
 		 * 2. 删除某个节点
@@ -68,9 +77,9 @@ public class LeeCode146_LRU缓存机制 {
 		 */
 		//在链表尾部添加节点x, 时间O(1): 左下 - 右上 - 左上 - 右下
 
-		// node1  -> x   ->  tail
-		// node1  <- x   <-  tail
-
+		// 尾部添加元素
+		// node1 -> x -> tail
+		// node1 <- x <- tail
 		public void addLast(Node x) {
 			// x节点在中间，设置新节点的前后驱
 			x.prev = tail.prev;
@@ -118,6 +127,7 @@ public class LeeCode146_LRU缓存机制 {
 			map = new HashMap<>();
 			cache = new DoubleList();
 		}
+		
 		/* 
 		 * 假设左边是队头，右边是队尾。最近使用的在队尾部.
 		 * 重要的几个API
@@ -164,7 +174,7 @@ public class LeeCode146_LRU缓存机制 {
 			Node deletedNode = cache.removeFirst();
 			
 			//同时从map中删除它的key
-			int deleteKey = deletedNode.val;
+			int deleteKey = deletedNode.key;
 			map.remove(deleteKey);
 		}
 		
@@ -192,7 +202,7 @@ public class LeeCode146_LRU缓存机制 {
 				addRecently(key, val);
 				return;
 			}
-			
+
 			if (cap == cache.size()) {
 				//删除最久未使用的元素
 				removeLeastRecently();
