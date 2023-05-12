@@ -1,8 +1,37 @@
 package 数组;
 
-import java.util.LinkedList;
 
 public class testDemo {
+	
+	
+	/**
+	 * 
+	 * 输入：nums = [0,	0,	1,	1,	1,	2,	2,	3,	3,	4]
+	 * 输出：5, nums = [0,1,2,3,4]
+	 * 
+	 */
+    public int removeDuplicates(int[] nums) {
+
+        //
+        int n = nums.length;
+        if (n <= 1) {
+        	return n;
+        }
+        int slow = 0, fast = 1;
+        while (fast < n) {
+			if (nums[slow] == nums[fast]) {
+				fast++;
+			} else {
+				slow++;
+				nums[slow] = nums[fast];
+				fast++;
+			}
+		}
+        return slow + 1;
+        
+        
+
+    }
 	public static int[] mergeTwoArr(int[] nums1, int[] nums2) {
 		int l1 = nums1.length, l2 = nums2.length;
 		int[] resultArr = new int[l1 + l2];

@@ -1,40 +1,24 @@
 package 动态规划;
 
-import java.util.Arrays;
-
 public class Test {
 
-	public int lengthOfLIS(int[] nums) {
-		// dp定义：以dp[i]以nums[i]为结尾的LIS的长度
-		
-		/**
-		 * index    0		1		2		3		4		5
-		 * nums:	1	    4		3		4		2		3
-		 * dp[i]:   1		2		2		3		2		
-		 * 
-		 * numd[5] 前面 nums[0]与nums[4]都小于5.那么 dp【5】= Math.max(dp[5], dp[1]或者dp[4] + 1)
-		 */
-//		nums[1] = 1, nums[2] = nums[1] < nums[2] ? nums[1] + 1 : 1;
-		
-		int n = nums.length;
-		int[] dp = new int[n];
-		
-		// dp初始化,均为1
-		Arrays.fill(dp, 1);
-		for (int i = 0; i < n; i++) {
-			for (int j = 0; j < i; j++) {
-				// 寻找nums[0, j - 1]之间比nums[i]小的元素
-				if (nums[i] > nums[j]) {
-					// 把nums[i]接在后面，即可形成长度为dp[j] + 1,且以nums[i]为结尾的递增子序列
-					dp[i] = Math.max(dp[i], dp[j] + 1);
-				}
+	// 比如说输入 nums = [-3,1,3,-1,2,-4,2]，算法返回 5，
+	// 因为最大子数组 [1,3,-1,2] 的和为 5。
+    public int maxSubArray(int[] nums) {
+    	// 采用滑动窗口, 窗口内和大于0扩大窗口，小于0时缩小窗口
+    	int left = 0, right = 0;
+    	int n = nums.length;
+    	int windowSum = 0;
+    	int maxSum = Integer.MIN_VALUE;
+    	while (right < n) {
+			windowSum += nums[right];
+			right++;
+			maxSum = Math.max(maxSum, windowSum);
+			while (windowSum < 0) {
+				windowSum -= nums[left];
+				left++;
 			}
 		}
-		// 明确dp数组的定义，需要遍历
-		int res = 1;
-		for (int i = 0; i < dp.length; i++) {
-			res = Math.max(res, dp[i]);
-		}
-		return res;
-	}
+    	return maxSum;
+    }
 }

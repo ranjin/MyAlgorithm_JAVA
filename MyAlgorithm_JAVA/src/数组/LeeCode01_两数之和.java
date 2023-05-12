@@ -1,4 +1,4 @@
-package 剑指Offer;
+package 数组;
 
 /**
  * 给定一个整数数组nums和一个整数目标值target，请在数组中找出和为目标值taget的那两个整数，并返回它们的数组下标。

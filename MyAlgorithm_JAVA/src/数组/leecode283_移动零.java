@@ -1,3 +1,4 @@
+package 数组;
 /**
  * 将数组中的所有零移动到数组末尾
  * 输入: nums = [0,1,0,3,12]
@@ -6,7 +7,7 @@
  * 思路：
  * 先删除数组中为0的元素，然后追加到数组末端
  */
-public class Solution {
+public class leecode283_移动零 {
     public void moveZeroes(int[] nums) {
 
         if (nums.length == 0) {
@@ -20,6 +21,7 @@ public class Solution {
         }
     }
 
+    // 原地移除指定元素
     public int removeElement(int[] nums, int val) {
         int slow = 0, fast = 0;
 
