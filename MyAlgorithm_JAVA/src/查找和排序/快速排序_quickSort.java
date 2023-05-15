@@ -11,25 +11,27 @@ package 查找和排序;
  * 极端情况下：时间复杂度：O(N^2), 空间复杂度：O(longN)
  * 是不稳定算法
  */
-public class 快速排序 {
-	int[] array;
-	// [begin, end)
-	public void sort(int begin, int end) {
+
+public class 快速排序_quickSort {
+
+	public static void sort(int[] array, int begin, int end) {
 		// 临界case：至少需要有2个元素
 		if (end - begin < 2) {
 			return;
 		}	
 		// begin元素的复制 pivot为分割点
-		int middle = findPartition(begin, end);
-		sort(begin, middle);
-		sort(middle + 1, end);
+		int middle = findPartition(array, begin, end);
+		sort(array, begin, middle);
+		sort(array, middle + 1, end);
 	}
 	
 	// 寻找分割点
-	public int findPartition(int begin, int end) {
+	public static int findPartition(int[] array, int begin, int end) {
 		// 备份轴点元素，后面会进行覆盖操作
 		int partition = array[begin];
-		end--;	// end指向最后一个元素
+		
+		// end指向最后一个元素
+		end--;	
 		while (begin < end) {
 			while (begin < end) {
 				// 默认从右向左
@@ -57,9 +59,12 @@ public class 快速排序 {
 		return begin;
 	}
 
-	public class Main {
-	    public void main(String[] args) {
-	        System.out.println("Hello World!");
-	    }
+	
+	public static void main(String[] args) {
+    	int[] nums = new int[] {5, 12, 3, 4, 19, 28, 24};
+    	sort(nums, 0, nums.length);
+    	for (int i : nums) {
+            System.out.println(i);
+		}
 	}
 }
