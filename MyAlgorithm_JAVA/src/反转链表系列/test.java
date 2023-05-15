@@ -1,5 +1,6 @@
+package 反转链表系列;
 
-public class Solution {
+public class test {
 
     public class ListNode {
         int val;
@@ -8,14 +9,7 @@ public class Solution {
 
     // 反转链表的一部分
     public ListNode reverseBetween(ListNode head, int left, int right) {
-        if (head == null) {
-            return head;
-        }
 
-        if (left == 1) {
-            return reverseN(ListNode head, n);
-        }
-        head.next = reverseBetween(head.next, left - 1, right - 1);
         return head;
     }
 

@@ -1,4 +1,4 @@
-package 链表;
+package 链表.二叉堆;
 
 import java.util.PriorityQueue;
 /**
@@ -9,14 +9,15 @@ import java.util.PriorityQueue;
  * 1->3->4
  * 2->6
  * 1->1->2->3->4->4->5->6 
- * 
- * 思路：
- * 将
+
  */
 public class LeeCode23_合并k个升序链表 {
 	public class ListNode {
 		int val;
 		ListNode next;
+		public ListNode(int val){
+			this.val = val;
+		}
 	}
 	
 	public ListNode mergeKLists(ListNode[] lists) {

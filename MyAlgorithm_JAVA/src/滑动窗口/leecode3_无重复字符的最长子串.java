@@ -13,7 +13,7 @@ import java.util.HashMap;
  *
  */
 public class leecode3_无重复字符的最长子串 {
-    public int lengthOfLongestSubstring(String s) {    	
+    public int lengthOfLongestSubstring2(String s) {    	
     	// 最终返回的是window的长度
     	HashMap<Character, Integer> window = new HashMap<>();
 

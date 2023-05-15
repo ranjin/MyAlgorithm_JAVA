@@ -14,11 +14,21 @@ public class LeeCode206_反转链表 {
 		ListNode(int val) {
 			this.val = val;
 		}
-		ListNode(int val, ListNode next) {
-			this.val = val;
-			this.next = next;
-		}
 		
+		//    1     ->    2	   ->    3	 ->   4
+		// 
+		
+		public ListNode reverseList_normal(ListNode head) {
+			if (head == null || head.next == null) {
+				return head;
+			}
+			
+			ListNode last = reverseList_normal(head.next);
+			
+			head.next.next = head;
+			head.next = null;
+			return last;
+		}
 		/**
 		 * 迭代:指针右移
 		 * 反转以head为头节点的链表

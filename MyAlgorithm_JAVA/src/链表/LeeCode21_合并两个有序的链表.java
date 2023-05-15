@@ -16,11 +16,14 @@ package 链表;
  */
 
 /**
- * 输入：l1 = [1、2、4]，l2 = [1、3、4]
+ * 输入：l1 = [1、2、4]，l2 = [2、3、4]
  * 输出：[1、1、2、3、4、4]
  */
-public class Solution {
+public class LeeCode21_合并两个有序的链表 {
 	public class ListNode{
+		public ListNode(int val) {
+			this.val = val;
+		}
 		int val;
 		ListNode next;
 	}

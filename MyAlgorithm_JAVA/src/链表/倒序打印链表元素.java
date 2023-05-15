@@ -1,9 +1,11 @@
-public class TreeNode {
-    int val;
-    TreeNode next;
-}
-
-public class Solution {
+package 链表;
+public class 倒序打印链表元素 {
+	
+	public class TreeNode {
+	    int val;
+	    TreeNode next;
+	}
+	
     public void traverse(TreeNode head) {
         if (head == null) {
             return;
@@ -13,6 +15,6 @@ public class Solution {
         traverse(head.next);
 
         // 后序位置
-        println(head.val);
+        System.out.print(head.val);
     }
 }

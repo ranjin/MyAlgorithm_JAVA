@@ -1,3 +1,4 @@
+package 数组;
 /**
  * 输入：s = "babad"
  * 输出："bab"
@@ -7,7 +8,7 @@
  * 技巧：从中心向两端扩散
  */
 
-public class Solution {
+public class leecode05_最长回文子串 {
     public String longestPalindrome(String s) {
         String res = "";
         for (int i = 0; i < s.length(); i++) {

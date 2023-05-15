@@ -1,7 +1,9 @@
 package 剑指Offer;
 
+import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Queue;
 
 /**
  * 输入：root = [3,9,20,null,null,15,7]
@@ -20,37 +22,55 @@ public class leecode_二叉树的层次遍历 {
 		TreeNode right;
 	}
 
+	public List<List<Integer>> levelOrder(TreeNode root) {
+		List<List<Integer>> res = new LinkedList<>();
+		if (root == null) {
+			return res;
+		}
+		
+		Queue<TreeNode> queue = new LinkedList<>();
+		
+		queue.offer(root);
+		
+		while (!queue.isEmpty()) {
+			int sz = queue.size();
+			List<Integer> temp = new ArrayList<>();
+			for (int i = 0; i < sz; i++) {
+				TreeNode cur = queue.poll();
+				if (cur.left != null) {
+					queue.offer(cur.left);
+				}
+				if (cur.right != null) {
+					queue.offer(cur.right);
+				}
+				temp.add(cur.val);
+			}
+			res.add(temp);
+		}
+		return res;
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 
 	public List<List<Integer>> levelOrder(TreeNode root) {
-		LinkedList<List<Integer>> resultList = new LinkedList<List<Integer>>();
-		if (root == null) {
-			return resultList;
-		}
-		LinkedList<ListNode> queue = new LinkedList<ListNode>
-		queue.add(root);
-		
-		LinkedList<Integer> itemList = new LinkedList<Integer>
-		itemList.add(root.val);
-		queue.add(root);
 
-		LinkedList<TreeNode> temp;
-
-		while(!queue.isEmpty) {
-			LinkedList<Integer> innerItemList = new LinkedList<Integer>;
-			temp = new LinkedList<ListNode>;
-
-			for(TreeNode node: queue) {
-				if (node.left != null) {
-					temp.add(node.left);
-				}
-				if (node.right != null) {
-					temp.add(node.right);
-				}
-				innerItemList.add(node.val);
-			}
-			queue = temp;
-			resultList.add()
-		}
 
     }
 	

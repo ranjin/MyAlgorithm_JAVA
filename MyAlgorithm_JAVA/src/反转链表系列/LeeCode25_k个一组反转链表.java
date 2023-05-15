@@ -14,7 +14,7 @@ import java.util.Iterator;
  * 如果最后的元素不足k个，就保持不变
  *
  */
-public class LeeCode_k个一组反转链表 {
+public class LeeCode25_k个一组反转链表 {
 	public class ListNode{
 		int val;
 		ListNode next;
@@ -47,9 +47,12 @@ public class LeeCode_k个一组反转链表 {
 				b = b.next;
 			}
 	    	// 反转前k个元素
-	    	ListNode newHead = reverse(a, b);
-			// 此时应该是a.next，而不是b.next，因为
-	    	a.next = reverseKGroup(b, k);
+			
+			
+			// a -> .. -> .. b
+	    	ListNode newHead = reverse1(a, b);
+			// 此时应该是a.next，而不是b.next，因为是把整个区间反转
+	    	a.next = reverseKGroup1(b, k);
 	    	return newHead;
 	    }
 	}

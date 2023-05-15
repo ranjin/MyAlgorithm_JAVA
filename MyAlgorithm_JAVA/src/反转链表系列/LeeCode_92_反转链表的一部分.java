@@ -19,6 +19,9 @@ public class LeeCode_92_反转链表的一部分 {
 			this.val = val;
 		}
 	}
+	
+	2 ~ 5
+	
     public ListNode reverseBetween(ListNode head, int left, int right) {
     	// base case
     	if (left == 1) {

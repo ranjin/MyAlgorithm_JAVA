@@ -1,3 +1,4 @@
+package 数组;
 /**
  * 两个排序数组 num1和nums2。m与n分别表示nums1与nums2中的元素数目
  * 合并nums2到nums1中
@@ -31,7 +32,7 @@ class Solution {
         // 可能其中一个数组的指针走到尽头了。
         // 这里我们只需要考虑nums2是否剩元素即可。
         while (j >= 0) {
-            num1[p] = num2[j];
+            nums1[p] = nums2[j];
             j--;
             p--;
         }
