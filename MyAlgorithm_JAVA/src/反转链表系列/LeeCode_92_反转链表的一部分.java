@@ -20,8 +20,9 @@ public class LeeCode_92_反转链表的一部分 {
 		}
 	}
 	
-	2 ~ 5
+	// 1 ~  3
 	
+	// 1	2	3	4	5
     public ListNode reverseBetween(ListNode head, int left, int right) {
     	// base case
     	if (left == 1) {

@@ -33,7 +33,7 @@ public class LeeCode206_反转链表 {
 		 * 迭代:指针右移
 		 * 反转以head为头节点的链表
 		 */
-		public ListNode reverseList_normal(ListNode head) {
+		public ListNode reverseList_normal2(ListNode head) {
 			if (head == null) {
 				return head;
 			}
