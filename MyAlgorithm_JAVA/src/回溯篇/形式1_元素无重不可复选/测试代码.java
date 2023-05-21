@@ -1,179 +1,34 @@
-package 形式1_元素无重不可复选;
+package 回溯篇.形式1_元素无重不可复选;
 import java.util.LinkedList;
 import java.util.List;
 
 public class 测试代码 {
 
-	List<List<Integer>> res = new LinkedList<>()
-
-	// 记录回溯的递归路径
-	LinkedList<Integer> track = new LinkedList<>();
-
-	// track中的元素会被标记为true
-	boolean[] used;
-
-	// 全排列
-	public List<List<Integer>> permute(int[] nums) {
-		used = new boolean[nums.length];
-		backtrack(nums);
-		return res;
-    }
-
-	// 回溯算法
-	public void backtrack(int[] nums) {
-		// base case: 到达叶子节点
-		if (track.size() == nums.length) {
-			res.add(new LinkedList<>(track));
-			return;
-		}
-
-		for (int i = 0; i < nums.length; i++) {
-			// 已经存在track中的元素，不能重复选择
-			if (nums[i] == true) {
-				continue;
-			}
-			// 做选择
-			used[i] = true;
-			track.addLast(nums[i]);
-
-			// 进入下一层回溯树
-			backtrack(nums);
-
-			// 取消选择
-			track.removeLast();
-		}
-	}
-	// // 结果集
-	// LinkedList<List<Integer>> res = new LinkedList<>();
-
-	// boolean[] used;
-	// // 路径: 已经做出的选择
-	// LinkedList<Integer> track = new LinkedList<>();
-	// used = new boolean[nums.length];
-	// public List<List<Integer>> permute(int[] nums) {
-	// 	backtrack(nums);
-	// }
-
-	// public void backtrack(int[] nums) {
-	// 	if (track.size() == nums.length) {
-	// 		res.add(new LinkedList<>(track));
-	// 		return;
-	// 	}
-	// 	for (int i = 0; i < nums.length; i++) {
-	// 		if (used[i]) {
-	// 			continue;
-	// 		}
-
-	// 		used[i] = true;
-	// 		// 做选择
-	// 		track.addLast(nums[i]);
-
-	// 		// 进入下一层决策树
-	// 		backtrack(nums[i]);
-
-	// 		used[i] = false;
-	// 		// 撤销选择
-	// 		track.removeLast();
-	// 	}
-	// }
-
-// 组合	
-//	List<List<Integer>> res = new LinkedList<>();
-//	LinkedList<Integer> track = new LinkedList<>();
-//    public List<List<Integer>> combine(int n, int k) {
-//    	backtrack(1, n, k);
-//    	return res;
-//    }
-//	
-//	public void backtrack(int start, int n, int k) {
-//		if (k == track.size()) {
-//			res.add(new LinkedList<>(track));
-//			return;
-//		}
-//		
-//		// 回溯算法框架
-//		for (int i = start; i <= n; i++) {
-//			// 做选择
-//			track.add(i);
-//			// 
-//			backtrack(i + 1, n, k);
-//			// 撤销选择
-//			track.removeLast();
-//		}
-//	}
-	
-	
-	
-//	/**
-//	 * 子集
-//	 * 输入：nums = [1,2,3]
-//	 * 输出：[[],[1],[2],[1,2],[3],[1,3],[2,3],[1,2,3]]
-//	 */
-//	LinkedList<List<Integer>> res = new LinkedList<>();
-//	
-//	// track: 路径
-//	LinkedList<Integer> track = new LinkedList<>();
-//    public List<List<Integer>> subsets(int[] nums) {
-//    	backtrack(nums, 0);
-//    	return res;
-//    }
-//    
-//    // 回溯
-//    public void backtrack(int[] nums, int start) {
-//		
-//    	res.add(new LinkedList<>(track));
-//    	
-//    	for (int i = start; i < nums.length; i++) {
-//			track.addLast(nums[i]);
-//			backtrack(nums, i + 1);
-//			track.removeLast();
-//		}
-//	}
-
-	// // 结果集
-	// LinkedList<List<Integer>> res = new LinkedList<>();
-
-	// // 记录路径
-	// LinkedList<Integer> track = new LinkedList<>();
-	// public List<List<Integer>> subsets(int[] nums) {
-	// 	backtrack(nums, 0);
-	// 	return res;
-	// }
-
-	// public void backtrack(int[] nums, int start){
-	// 	res.add(new LinkedList<>(track));
-	// 	// 
-	// 	for (int i = start; i < nums.length; i++) {
-	// 		track.addLast(nums[i]);
-
-	// 		backtrack(nums, i + 1);
-	// 		track.removeLast();
-	// 	}
-	// }
-
 	// 结果集
-	LinkedList<List<Integer>> res = new LinkedList<>();
-
-	// 记录路径
+	List<List<Integer>> res = new LinkedList<>();
+	
+	// 路径
 	LinkedList<Integer> track = new LinkedList<>();
-
-	public List<List<Integer>> combine(int n, int k) {
-		backtrack(0, n, k);
-		return res;
+	
+    public List<List<Integer>> subsets(int[] nums) {
+    	backtrack(nums, 0);
+    	return res;
     }
-
-	public void backtrack(int start, int n, int k) {
-		if (k = track.length) {
-			res.add(new LinkedList<>(track));
-			return;
+    
+    
+    public void backtrack(int[] nums, int start) {
+    	
+    	// 前序位置
+    	res.add(new LinkedList<>(track));
+    	
+    	for (int i = start; i < nums.length; i++) {
+			
+        	// 做选择
+    		track.add(nums[i]);
+    		
+    		backtrack(nums, i + 1);
+    		
+    		track.removeLast();
 		}
-
-		for (int i = start; i <= n; i++) {
-			track.addLast(nums[i]);
-
-			backtrack(start + 1, n, k);
-
-			track.removeLast();
-		}
-	}
+    }
 }

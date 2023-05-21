@@ -1,4 +1,4 @@
-package 形式2_元素可重不可复选;
+package 回溯篇.形式2_元素可重不可复选;
 
 import java.util.Arrays;
 import java.util.LinkedList;
