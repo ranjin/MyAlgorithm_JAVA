@@ -6,7 +6,7 @@ package 算法思维系列;
 public class 前缀和技巧 {
 
     public int subarraySum(int[] nums, int k) {
-		
+		return 0;
 	}
 }
 

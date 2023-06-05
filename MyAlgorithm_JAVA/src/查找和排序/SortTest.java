@@ -2,40 +2,56 @@ package 查找和排序;
 
 public class SortTest {
 
-	// 归并排序
-	// 后序遍历 左右根
-	int[] arr;
-	int[] leftArr;
-	public void gbSort(int begin, int end) {
+	
+	// 快速排序
+	public static void sort(int[] array, int begin, int end) {
 		if (end - begin < 2) {
 			return;
 		}
-		int mid = (begin + end) >> 1;
-		gbSort(begin, mid);
-		gbSort(mid, end);
-		merge(begin, mid, end);
+		int partition = findPartition(array, begin, end);
+		sort(array, begin, partition);
+		sort(array, partition + 1, end);
 	}
 	
-	public void merge(int begin, int mid, int end) {
-		// 备份左边数组
-		int li = 0, le = mid - begin, ri = mid, re = end;
-		int ai = begin;
-		for (int i = li; i < le; i++) {
-			leftArr[i] = arr[i + begin];
+	public static int findPartition (int[] array, int begin, int end) {
+		
+		end--;
+		int partition = array[begin];
+		
+		while (begin < end) {
+			// 默认从右向左
+			while (begin < end) {
+				if (array[end] > partition) {
+					end--;
+				} else {
+					array[begin] = array[end];
+					begin++;
+					break;
+				}	
+			}
+			
+			while (begin < end) {
+				if (array[begin] < partition) {
+					begin++;
+				} else {
+					array[end] = array[begin];
+					end--;
+					break;
+				}	
+			}
 		}
 		
-		// arr		 right
-		// leftarr
-		while (li < le) {
-			if (arr[ri] < leftArr[li]) {
-				arr[ai] = arr[ri];
-				ai++;
-				ri++;
-			} else {
-				arr[ai] = leftArr[li];
-				ai++;
-				li++;
-			}
+		
+		
+		array[begin] = partition;
+		return begin;
+	}
+	
+	public static void main(String[] args) {
+    	int[] nums = new int[] {5, 12, 3, 4, 19, 28, 24};
+    	sort(nums, 0, nums.length);
+    	for (int i : nums) {
+            System.out.println(i);
 		}
 	}
 }
