@@ -1,14 +1,12 @@
-package 形式2_元素可重不可复选;
+package 回溯篇.形式2_元素可重不可复选;
 
 import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.List;
 
 /**
- * 给定一个候选人编号的集合 candidates 和一个目标数 target ，
- * 找出 candidates 中所有可以使数字和为 target 的组合。
- * candidates 中的每个数字在每个组合中只能使用 一次 。
- * 注意：解集不能包含重复的组合。 
+ * 计算candidates和为target的组合(子集)
+ * candidates可能存在重复元素
  * 输入: candidates = [10,1,2,7,6,1,5], target = 8
  * 输出:
  * [
@@ -19,7 +17,6 @@ import java.util.List;
  * ]
  */
 public class leecode40_组合总和2 {
-	
 	List<List<Integer>> res = new LinkedList<>();
 	
 	// 路径

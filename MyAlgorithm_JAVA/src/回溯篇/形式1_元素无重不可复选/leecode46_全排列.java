@@ -27,15 +27,19 @@ public class leecode46_全排列 {
 	
 	// track中的元素会被标记为true
 	boolean[] used;
+	
     public List<List<Integer>> permute(int[] nums) {
     	used = new boolean[nums.length];
     	backtrack(nums);
     	return res;
     }
     
+    
+    // 回溯算法核心函数
     public void backtrack(int[] nums) {
 		// base case，到达叶子节点
     	if (track.size() == nums.length) {
+    		// 收集叶子节点上的值
 			res.add(new LinkedList<>(track));
 			return;
 		}
