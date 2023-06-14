@@ -1,48 +1,39 @@
 package 二叉树;
 
-import java.util.ArrayList;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Queue;
+import 二叉树.二叉树的最大深度.TreeNode;
 
 public class test {
 
-	public class TreeNode {
+	public class TreeNode{
 		int val;
 		TreeNode left;
 		TreeNode right;
-		public TreeNode(int val, TreeNode left, TreeNode right) {
-			this.val = val;
-			this.left = left;
-			this.right = right;
-		}
 	}
 	
-	public List<List<Integer>> levelOrder(TreeNode root) {
-		List<List<Integer>> res = new LinkedList<>();
-		
-		Queue<TreeNode> queue = new LinkedList<>();
-		
+
+	int maxDepth = 0;
+	
+	int levelDepth = 0;
+	public int maxDepth(TreeNode root) {
 		if (root == null) {
-			return res;
+			return maxDepth;
 		}
-		queue.offer(root);
+		traverse(root);		
+		return maxDepth;
+	}
+	
+	public void traverse(TreeNode rooNode) {
 		
-		while (!queue.isEmpty()) {
-			int sz = queue.size();
-			List<Integer> tmpList = new ArrayList<>();
-			for (int i = 0; i < sz; i++) {
-				TreeNode cur = queue.poll();
-				if (cur.left != null) {
-					queue.offer(cur.left);
-				}
-				if (cur.right != null) {
-					queue.offer(cur.right);
-				}
-				tmpList.add(cur.val);
-			}
-			res.add(tmpList);
+		if (rooNode == null) {
+			// 到达叶子节点,更新
+			maxDepth = Math.max(maxDepth, levelDepth);
+			return;
 		}
-		return res;
+		// 前序遍历
+		levelDepth++;
+		traverse(rooNode.left);
+		traverse(rooNode.right);
+		levelDepth--;
+		
 	}
 }
