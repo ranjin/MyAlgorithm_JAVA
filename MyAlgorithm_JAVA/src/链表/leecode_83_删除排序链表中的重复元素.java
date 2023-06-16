@@ -41,7 +41,12 @@ public class leecode_83_删除排序链表中的重复元素 {
     }
 
 	// 解法2: 快慢指针	
+    //        slow
+    // 		                 fast
+    // 1	->	2	->	2	->	3	->	3	->	4
 	public ListNode deleteDuplicates2(ListNode head) {
+		
+		
 		if (head == null) {
             return head;
         }

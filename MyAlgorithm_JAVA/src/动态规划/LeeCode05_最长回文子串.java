@@ -1,7 +1,5 @@
 package 动态规划;
 
-import java.util.Iterator;
-
 /**
  * 不使用动态规划
  * 输入：s = "cbbd"

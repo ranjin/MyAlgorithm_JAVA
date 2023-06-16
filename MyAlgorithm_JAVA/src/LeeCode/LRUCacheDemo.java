@@ -1,134 +1,134 @@
 package LeeCode;
-
 import java.util.HashMap;
 
+/**
+ * 哈希表 + 双向链表
+ * 
+ *
+ */
 public class LRUCacheDemo {
-
-	
-	// 哈希表 + 双向链表
-	
-	// Node节点(包含前后驱)
-	public class Node {
+	public class ListNode {
+		ListNode next;
+		ListNode prev;
 		int val;
 		int key;
-		Node prev;
-		Node next;
-		public Node(int key, int val) {
+		public ListNode(int val, int key) {
 			this.key = key;
 			this.val = val;
 		}
 	}
 	
+	// 双向链表，头部为久未使用元素，尾部为最新元素
 	public class DoubleList {
+		ListNode head;
+		ListNode tail;
 		int size;
-		Node head;
-		Node tail;
 		public DoubleList() {
+			head = new ListNode(0, 0);
+			tail = new ListNode(0, 0);
 			head.next = tail;
 			tail.prev = head;
-			this.size = 0;
+			size = 0;
 		}
 		
-		// 链表需要具备的功能：表头为久未使用元素，表尾为最近使用元素
-		//1. 表尾添加元素
-		// node1 -> x -> tail
-		// node1 <- x <- tail
-		public void addLast(Node x) {
-			x.prev = tail.prev;
-			x.next = tail;
-			tail.prev.next = x;
-			tail.prev = x;
+		// 尾部添加元素
+		// node1 -> node2
+		// node1 -> x -> node2
+		// node1 <- x <- node2
+		public void addLast(ListNode node) {
+			node.prev = tail.prev;
+			node.next = tail;
+			node.prev.next = node;
+			tail.prev = node;
 			size++;
 		}
 		
-		// 删除指定节点
-		// node1 -> x -> node2
-		// node2 <- x <- node1
-		public void remove(Node x) {
-			x.prev.next = x.next;
-			x.next.prev = x.prev;
+		// 删除某个元素
+		public void deleteNode(ListNode node) {
+			node.prev.next = node.next;
+			node.next.prev = node.prev;
 			size--;
 		}
 		
-		// 删除表头节点并返回
-		public Node removeFirst() {
-			if (head.next == null) {
+		// 删除头部元素并返回
+		public ListNode deleteFirst() {
+			if (head.next == tail) {
 				return null;
 			}
-			Node x = head.next;
-			remove(x);
-			return x;
+			ListNode node = head.next;
+			deleteNode(node);
+			return node;
 		}
 		
+		// 返回链表size
 		public int size() {
-			return size;
+			return this.size;
 		}
-		
-		// 同时应该具备的几个方法
-		// 1. makeRecently()
 	}
 	
-	public class LRUCacheCode {
-		HashMap<Integer, Node> map;
+	public class LRUCache {
 		DoubleList cache;
-		int cap;
-		public LRUCacheCode(int cap) {
-			this.cap = cap;
-			map = new HashMap<>();
+		HashMap<Integer, ListNode> map;
+		
+		// 容量
+		private int cap;
+		public LRUCache(int capacity) {
+			this.cap = capacity;
 			cache = new DoubleList();
-		}
-		// 提升为最近使用元素
-		public void makeRecently(int key) {
-			Node x = map.get(key);
-			
-			cache.remove(x);
-			cache.addLast(x);
+			map = new HashMap<>();
 		}
 		
-		// 
+		// 将元素置为最近使用元素
+		public void makeRecently(int key) {
+			ListNode node = map.get(key);
+			cache.deleteNode(node);
+			cache.addLast(node);
+		}
+		
+		// 删除久未使用元素
+		public void removeLeastRecently() {
+			ListNode node = cache.deleteFirst();
+			map.remove(node.key);
+		}
+		
+		// 添加最近使用元素
 		public void addRecently(int key, int val) {
-			Node x = new Node(key, val);
+			ListNode x = new ListNode(key, val);
 			cache.addLast(x);
 			map.put(key, x);
 		}
 		
 		public void deleteKey(int key) {
-			Node x = map.get(key);
-			
-			cache.remove(x);
+			ListNode x = map.get(key);
+			cache.deleteNode(x);
 			map.remove(key);
 		}
 		
-		// 删除久未使用元素
-		public void deleteRecently() {
-			// 
-			Node x = cache.removeFirst();
-			map.remove(x.key);
-		}
-		
 		public int get(int key) {
-			if (!map.containsKey(key)) {
-				return -1;
+			if (map.containsKey(key)) {
+				
+			 	ListNode node = map.get(key);
+			 	makeRecently(key);
+			 	return node.val;
 			}
-			makeRecently(key);
-			return map.get(key).val;
+			return -1;
 		}
 		
 		public void put(int key, int val) {
 			if (map.containsKey(key)) {
-				// 包含
+				// 哈希表中有对应的key
+				// 删除旧数据
 				deleteKey(key);
 				addRecently(key, val);
-				return;
+			} else {
+				// 无对应的key
+				
+				if (cap == cache.size) {
+					removeLeastRecently();
+				}
+				addRecently(key, val);
 			}
-			
-			// 不包含
-			if (cache.size() == cap) {
-				deleteRecently();
-			}
-			addRecently(key, val);
 		}
 		
 	}
-	
 }
