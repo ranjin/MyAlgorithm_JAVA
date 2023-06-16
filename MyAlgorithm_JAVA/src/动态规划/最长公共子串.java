@@ -1,7 +1,5 @@
 package 动态规划;
 
-import java.util.Iterator;
-
 /**
  * 子串是连续的子序列
  * ABCBA和BABCA的最长公共子串是ABC，长度为3  
