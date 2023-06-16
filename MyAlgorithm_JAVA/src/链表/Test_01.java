@@ -19,8 +19,8 @@ public class Test_01 {
 	 */
     public ListNode mergeTwoLists(ListNode list1, ListNode list2) {
     	// 虚拟头节点
-    	ListNode l = new ListNode(-1);
-    	ListNode result = l;
+    	ListNode dummy = new ListNode(-1);
+    	ListNode l = dummy;
     	ListNode l1 = list1;
     	ListNode l2 = list2;
     	
@@ -32,6 +32,7 @@ public class Test_01 {
 				l.next = l1;
 				l1 = l1.next;
 			}
+			l = l.next;
 		}
     	if (l1 == null) {
 			l.next = l2;
@@ -40,7 +41,7 @@ public class Test_01 {
     	if (l2 == null) {
 			l.next = l1;
 		}
-    	return result.next;
+    	return dummy.next;
     }
 	
 	public static void main(String[] args) {

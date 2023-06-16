@@ -3,7 +3,10 @@ package 数组;
  * 移除数组nums中值为val的元素，返回移除后数组的新长度
  * 
  * [3,2,2,3] val = 3，输出[2, 2]
- * 思路：
+ * 
+ *                slow
+ * 		                  fast
+ * 3、		2、		2、		3
  */
 
 public class leecode27_移除元素 {
