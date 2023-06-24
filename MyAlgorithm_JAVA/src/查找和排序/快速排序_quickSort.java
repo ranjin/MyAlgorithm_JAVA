@@ -13,7 +13,6 @@ package 查找和排序;
  */
 
 public class 快速排序_quickSort {
-
 	public static void sort(int[] array, int begin, int end) {
 		// 临界case：至少需要有2个元素
 		if (end - begin < 2) {
