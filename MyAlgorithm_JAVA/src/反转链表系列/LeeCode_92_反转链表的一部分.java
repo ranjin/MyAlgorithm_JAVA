@@ -20,6 +20,12 @@ public class LeeCode_92_反转链表的一部分 {
 		}
 	}
 		
+	
+    public ListNode reverseBetween(ListNode head, int left, int right) {
+    	if (left == 1) {
+			// 反转链表的前right个元素
+		}
+    }
     public ListNode reverseBetween(ListNode head, int left, int right) {
     	// base case
     	if (left == 1) {
