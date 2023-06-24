@@ -15,15 +15,12 @@ public class LeeCode206_反转链表 {
 			this.val = val;
 		}
 		
-		//    1     ->    2	   ->    3	 ->   4
-		// 
-		
-		public ListNode reverseList_normal(ListNode head) {
+		public ListNode reverseList_method1(ListNode head) {
 			if (head == null || head.next == null) {
 				return head;
 			}
 			
-			ListNode last = reverseList_normal(head.next);
+			ListNode last = reverseList_method1(head.next);
 			
 			head.next.next = head;
 			head.next = null;
@@ -33,7 +30,7 @@ public class LeeCode206_反转链表 {
 		 * 迭代:指针右移
 		 * 反转以head为头节点的链表
 		 */
-		public ListNode reverseList_normal(ListNode head) {
+		public ListNode reverseList_method2(ListNode head) {
 			if (head == null) {
 				return head;
 			}
