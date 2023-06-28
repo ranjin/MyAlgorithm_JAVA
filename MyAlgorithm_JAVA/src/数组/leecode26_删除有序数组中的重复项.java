@@ -17,6 +17,9 @@ package 数组;
  3. 直至fast 超过数组大小
  */
 
+//     
+//slow fast
+// 0	1	1	2	2	3
 public class leecode26_删除有序数组中的重复项 {
 	public int removeDuplicates(int[] nums) {
 		if (nums.length == 0) {

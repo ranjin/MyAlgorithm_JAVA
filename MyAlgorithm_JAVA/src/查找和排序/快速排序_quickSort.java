@@ -13,7 +13,6 @@ package 查找和排序;
  */
 
 public class 快速排序_quickSort {
-
 	public static void sort(int[] array, int begin, int end) {
 		// 临界case：至少需要有2个元素
 		if (end - begin < 2) {
@@ -29,9 +28,7 @@ public class 快速排序_quickSort {
 	public static int findPartition(int[] array, int begin, int end) {
 		// 备份轴点元素，后面会进行覆盖操作
 		int partition = array[begin];
-		
-		// end指向最后一个元素
-		end--;	
+		end--;	// end指向最后一个元素
 		while (begin < end) {
 			while (begin < end) {
 				// 默认从右向左
