@@ -1,6 +1,6 @@
 package 反转链表系列;
 
-import 反转链表系列.LeeCode_92_反转链表的一部分.ListNode;
+import java.util.Iterator;
 
 public class test {
 
@@ -8,71 +8,52 @@ public class test {
         int val;
         ListNode next;
     }
-    
-    // 反转链表的一部分
-    public ListNode reverseBetween(ListNode head, int left, int right) {
-    	//
-    	if (left == 0) {
-    		// 反转链表前N个元素
-    		return reverseN(head, right);
-    	}
-    	// 
-    	
-    }
-    
-    // 反转链表前N个节点
-    // 1 	-> 	2	-> 	3	->4		-> 5
-    ListNode successor = null;
-    public ListNode reverseN(ListNode head, int n) {
-    	
+
+    /// k个一组反转链表
+    /**
+     * 先反转以head开头的k个元素
+     * 然后以k + 1个元素作为head递归调用
+     * 将结果连接起来
+     * @param head
+     * @param k
+     * @return
+     */
+    public ListNode reverseKGroup1(ListNode head, int k) {
     	if (head == null || head.next == null) {
-    		return head;
-    	}
+			return head;
+		}
     	
-    	if (n == 1) {
-    		successor = head.next;
-    		return head;
-    	}
+    	// 区间[a, b)包含k个待反转元素
+    	ListNode a, b;
+    	a = b = head;
     	
-    	ListNode last = reverseN(head.next, n - 1);
-    	head.next.next = head;
-    	head.next = successor;
-    	return last;
+    	for (int i = 0; i < k; i++) {
+			if (b == null) {
+				// 不足k个，不需要反转
+				return head;
+			}
+			b = b.next;
+		}
     	
+    	ListNode newHead = reverseT(a, b);
     	
-    	
-    	
-    	
-    	
+    	a.next = reverseKGroup1(newHead, k);
+    	return newHead;
     }
+    
+    public static ListNode reverseT(ListNode a, ListNode b) {
+		ListNode pre = null, cur = a, nxt = cur;
+		
+		
+		while (cur != b) {
+			nxt = cur.next;
+			cur.next = pre;
+			pre = cur;
+			cur = nxt;
+		}
+		return pre;
+	}
+    
 
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    // 反转链表的一部分
-    public ListNode reverseBetween(ListNode head, int left, int right) {
 
-        return head;
-    }
-
-    // 反转链表前N个节点
-    ListNode successor = null;
-    public ListNode reverseN(ListNode head, int n) {
-        if (n == 1) {
-            successor = head.next;
-            return head;
-        }
-        ListNode last = reverseN(head.next, n - 1);
-        head.next.next = head;
-        head.next = successor;
-        return last;
-    }
 }
