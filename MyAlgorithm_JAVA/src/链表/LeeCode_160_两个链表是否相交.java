@@ -18,7 +18,7 @@ public class LeeCode_160_两个链表是否相交 {
 	}
 	ListNode getIntersectionNode(ListNode headA, ListNode headB) {
 		ListNode p1 = headA;
-		ListNode p2 = headA;
+		ListNode p2 = headB;
 		while (p1 != p2) {
 			if (p1 == null) {
 				p1 = headB;
