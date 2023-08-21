@@ -2,6 +2,7 @@ package 链表;
 
 /**
  * 返回链表的中间节点,如果有两个，则返回两个节点
+ * 思路：快慢指针
  *
  * [1、2、3、4、5]
  */
@@ -27,7 +28,6 @@ public class LeeCode_876_单链表的中点 {
 			fast = fast.next.next;
 			slow = slow.next;
 		}
-		// 单个
 		return slow;
 	}
 }

@@ -17,33 +17,6 @@ class leecode2_两数相加 {
         	this.val = val;
 		}
     }
-    
-    public ListNode addTwoNumbers(ListNode l1, ListNode l2) {
-    	
-    	ListNode p1 = l1, p2 = l2;
-    	ListNode dummy = new ListNode(-1);
-    	ListNode p = dummy;
-    	
-    	int carry = 0;	// 记录进位
-    	// 两条链表都不为空且进位大于0时结束
-    	while (p1 != null || p2 != null || carry > 0) {
-    		int val = carry;
-			if (p1 != null) {
-				val += p1.val;
-				p1 = p1.next;
-			}
-			if (p2 != null) {
-				val += p2.val;
-				p2 = p2.next;
-			}
-			carry = val / 10;
-			val = val % 10;
-			ListNode node = new ListNode(val);
-			p.next = node;
-	    	p = p.next;
-		}
-    	return dummy.next;
-    }
 
     public ListNode addTwoNumbers(ListNode l1, ListNode l2) {
         // 在两条链表上的指针

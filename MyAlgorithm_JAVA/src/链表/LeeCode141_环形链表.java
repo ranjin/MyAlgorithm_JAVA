@@ -12,13 +12,13 @@ public class LeeCode141_环形链表 {
 	}
 	public boolean hasCycle(ListNode head) {
 		ListNode fast = head;
-		ListNode slowNode = head;
+		ListNode slow = head;
 	
 		while (fast != null && fast.next != null) {
 			fast = fast.next.next;
-			slowNode = slowNode.next;
+			slow = slow.next;
 		}
-		if (slowNode == fast) {
+		if (slow == fast) {
 			return true;
 		}
 		return false;

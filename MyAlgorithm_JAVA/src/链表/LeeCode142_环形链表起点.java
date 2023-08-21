@@ -7,7 +7,7 @@ package 链表;
  * 那么当再次相遇时即为起点的位置
  *
  */
-public class LeeCode142_环形链表2 {
+public class LeeCode142_环形链表起点 {
 
 	public class ListNode {
 		int val;
