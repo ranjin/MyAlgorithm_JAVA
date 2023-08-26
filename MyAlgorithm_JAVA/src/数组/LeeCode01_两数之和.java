@@ -1,4 +1,5 @@
 package 数组;
+import java.util.HashMap;
 
 /**
  * 给定一个整数数组nums和一个整数目标值target，
@@ -6,11 +7,6 @@ package 数组;
  * nums = [2, 7, 11, 15], taget = 9
  * 数组[0, 1]
  */
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
 
 public class LeeCode01_两数之和 {
 	/*

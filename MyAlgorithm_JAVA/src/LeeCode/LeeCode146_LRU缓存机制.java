@@ -68,7 +68,7 @@ public class LeeCode146_LRU缓存机制 {
 		}
 		
 		/*
-		 * 队头为久未使用元素, 队尾为最近使用元素
+		 * 左边为队头：久未使用元素, 右边为队尾：最近使用元素
 		 * 双向链表的四个方法：
 		 * 1. 往尾部添加节点，(假设左边是队头，右边是队尾。最近使用的在队尾部.)
 		 * 2. 删除某个节点
@@ -92,6 +92,8 @@ public class LeeCode146_LRU缓存机制 {
 		
 		//删除链表中的x节点(x一定存在) 以x节点为中心
 		//由于是双向链表且给的目标Node节点，时间O(1)
+		// node1 -> x -> node2
+		// node1 <- x <- ndoe2
 		public void remove(Node x) {
 			x.prev.next = x.next;
 			x.next.prev = x.prev;

@@ -19,8 +19,8 @@ public class LeeCode142_环形链表起点 {
 		ListNode slow = head;
 		ListNode fast = head;
 		while (fast != null && fast.next != null) {
-			fast = fast.next.next;
 			slow = slow.next;
+			fast = fast.next.next;
 			// 说明有环
 			if (fast == slow) {
 				break;

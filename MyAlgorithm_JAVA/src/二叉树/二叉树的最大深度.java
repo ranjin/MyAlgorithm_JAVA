@@ -18,9 +18,7 @@ public class 二叉树的最大深度 {
 	// 记录最大深度
 	int res = 0;
 	// 记录遍历到的节点的最大深度
-	int depth = Integer.MAX_VALUE;
-
-	
+	int depth = 0;
 	
 	public int maxDepth_1(TreeNode root) {
 		traverse(root);
