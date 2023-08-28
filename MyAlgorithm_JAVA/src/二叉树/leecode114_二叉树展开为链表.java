@@ -16,7 +16,11 @@ public class leecode114_二叉树展开为链表 {
 	    int val;
 	    TreeNode left;
 	    TreeNode right;
+	    public TreeNode(int val) {
+	    	this.val = val;
+		}
 	 }
+
     // 输入节点root，然后root为根的二叉树就会被拉平为一条链条
     // 对于一个节点x，可以执行以下流程：
     // 1. 先利用flatten(x.left)和flatten(x.right)将X的左右子树拉平。
