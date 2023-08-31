@@ -5,7 +5,7 @@ package 数组;
  * 输入：nums1 = [1,2,3,0,0,0], m = 3, nums2 = [2,5,6], n = 3
  * 输出：[1,2,2,3,5,6]
  */
-class Solution {
+class leecode88_合并两个有序数组 {
     /**
      * 思路：
      * 由于是需要将nums2的数组合并到nums1中
@@ -37,4 +37,47 @@ class Solution {
             p--;
         }
     }
+    
+    public static void main(String[] args) {
+		int[] nums1 = new int[] {1,2,3};
+		int[] nums2 = new int[] {2,5,6};
+		
+		int m = nums1.length, n = nums2.length;
+		
+		/// longNums = [1,2,3,0,0,0]
+		int[] longNums = new int[m + n];
+		for (int i = 0; i < m; i++) {
+			longNums[i] = nums1[i];
+		}
+		for (int k = 0; k < longNums.length; k++) {
+			System.out.println(longNums[k]);
+		}
+		
+		int i = m - 1, j = n -1;
+		
+		// 数组新顺序
+		int p = longNums.length - 1;
+		
+		while (i >= 0 && j >= 0) {
+			if (longNums[i] > nums2[j]) {
+				longNums[p] = longNums[i];
+				i--;
+			} else {
+				longNums[p] = nums2[j];
+				j--;
+			}
+			p--;
+		}
+		
+		// 考虑nums2是否还有剩余元素
+		while (j >= 0) {
+			longNums[p] = nums2[j];
+			j--;
+			p--;
+		}
+		
+		for (int k = 0; k < longNums.length; k++) {
+			System.out.println(longNums[k]);
+		}
+	}
 }

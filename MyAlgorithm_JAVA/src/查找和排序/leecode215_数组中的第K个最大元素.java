@@ -4,7 +4,7 @@ import java.util.PriorityQueue;
 
 public class leecode215_数组中的第K个最大元素 {
 
-    public int findKthLargest2(int[] nums, int k) {
+    public int findKthLargest(int[] nums, int k) {
     	
     	// 优先级队列
     	PriorityQueue<Integer> queue = new PriorityQueue<Integer>();
@@ -40,6 +40,7 @@ public class leecode215_数组中的第K个最大元素 {
     			return nums[partition];
     		}	
 		}
+    	return -1;
     }
     
     /// 寻找轴点元素
