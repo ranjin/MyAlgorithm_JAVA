@@ -8,7 +8,7 @@ import 单调栈.leecode1019_链表中的下一个更大节点.ListNode;
  * LRU采用哈希表 + 双向链表的形式 - 哈希链表
  * 哈希表查找快，链表插入删除快
  * 为什么是双向链表？
- * 因为我们需要删除操作，删除一个节点我们如果直到了前驱与后驱节点，那么可以保证时间复杂度为O(1)
+ * 因为我们需要删除操作，删除一个节点我们如果知道了前驱与后驱节点，那么可以保证时间复杂度为O(1)
  * 
  * 步骤：
  * 
@@ -81,6 +81,7 @@ public class LeeCode146_LRU缓存机制 {
 		// node1 -> x -> tail
 		// node1 <- x <- tail
 		public void addLast(Node x) {
+			
 			// x节点在中间，设置新节点的前后驱
 			x.prev = tail.prev;
 			x.next = tail;

@@ -15,10 +15,13 @@ public class _反转链表前N个节点 {
 		 * 递归实现
 		 * 与反转整个链表不同的是，head节点在递归完成之后不一定会指向null，所以要记录后驱节点head.next;
 		 */
+		// 1 ->  2 -> 3 -> 4 -> 5	n = 3 
+		// 
 		public ListNode reverseN(ListNode head, int n) {
 			if (head == null || head.next == null) {
 				return head;
 			}
+			
 			// 后驱节点 
 			ListNode successor = null;
 			if (n == 1) {

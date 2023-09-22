@@ -1,28 +1,32 @@
 package 查找和排序;
 
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Queue;
-
-import 链表.LeeCode_19_删除链表的倒数第K个节点.ListNode;
+import 反转链表系列.LeeCode206_反转链表.ListNode;
 
 public class SortTest {
 
-	public class ListNode{
+	public class ListNode {
 		int val;
 		ListNode next;
-		public ListNode(int val) {
+		ListNode() {}
+		ListNode(int val) {
 			this.val = val;
 		}
 	}
-	
-	// 删除链表的倒数第N个元素
-	public ListNode removeNthFromEnd(ListNode head, int n) {
-	
-		// 虚拟头节点
-		ListNode dummy = new ListNode(-1);
+	//		 pre  cur   nxt
+	//             1 -	 2 -  3 -	4 - 5
+    //
+	public ListNode reverseList_normal(ListNode head) {
 		
-		dummy.next = head;
+		ListNode pre = null, cur = head, nxt = head;
+		
+		while (cur != null) {
+			nxt = cur.next;
+			cur.next = pre;
+			pre = cur;
+			cur = nxt;
+			
+		}
+		return pre;
 	}
 	public static void main(String[] args) {
     	int[] nums = new int[] {5, 12, 3, 4, 19, 1, 28, 24};
