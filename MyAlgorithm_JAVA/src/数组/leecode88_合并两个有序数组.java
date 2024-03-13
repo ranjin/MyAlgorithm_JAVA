@@ -12,6 +12,7 @@ class leecode88_合并两个有序数组 {
      * 将双指针初始化在数组尾部，然后从后往前进行合并。
      * 这样避免从头往后会覆盖num1中的元素
      */
+	
     public void merge(int[] nums1, int m, int[] nums2, int n) {
         // 两个指针分别初始化在两个数组的最后一个元素
         int i = m - 1; 
