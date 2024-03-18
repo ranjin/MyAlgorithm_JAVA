@@ -26,15 +26,14 @@ public class LeeCode01_两数之和 {
 		return new int[] {-1, -1};
 	}
 	
+	/// 进阶：你可以想出一个时间复杂度小于 O(n2) 的算法吗？
 	/*
 	 * 通过哈希表减少时间复杂度
-	 * 对于一个元素nums[i], 你想知道有没有另一个元素nums[i]的值为target - nums[i]
-	 * 用哈希表记录每个元素的值到索引的映射。这样就能判断数组中是否有一个值为target - nums[i]的元素了
-	 * 
+	 * HashMap(val, index)
 	 * 时间复杂度为O(N), 空间复杂度O(N)
+	 * 如果contain这个值，那么直接可以获取到这个元素在哈希表中的索引。
 	 */
 	public int[] twoSum2(int[] sums, int target) {
-		int n = sums.length; 
 		// 构造哈希表：元素映射到对应的索引
 		HashMap<Integer, Integer> valueToIndex = new HashMap<>();
 		for (int i = 0; i < sums.length; i++) {
