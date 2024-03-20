@@ -16,7 +16,6 @@ package 链表;
  * 
  */
 
-
 public class leecode_83_删除排序链表中的重复元素 {
 	public class ListNode {
 		int val;
@@ -40,10 +39,9 @@ public class leecode_83_删除排序链表中的重复元素 {
     	return head;
     }
 
-	// 解法2: 快慢指针	 
-    // 思路： slow 到 fast
-    //       slow
-    // slow    fast	                  fast
+	// 解法2: 类似数组去重复 
+    // slow
+    // fast
     // 1	->	2	->	2	->	3	->	3	->	4
 	public ListNode deleteDuplicates2(ListNode head) {
 		if (head == null) {
@@ -53,18 +51,13 @@ public class leecode_83_删除排序链表中的重复元素 {
 		ListNode fast = head;
 		while (fast != null) {
 			
-//			if (slow.val == fast.val) {
-//				fast = fast.next;
-//			} else {
-//				slow.next = fast;
-//				slow = slow.next;
-//				fast = fast.next;
-//			}
-			if (slow.val != fast.val) {
+			if (slow.val == fast.val) {
+				fast = fast.next;
+			} else {
 				slow.next = fast;
-				slow = slow.next;	// 这时，slow已经指向fast了
+				slow = slow.next;
+				fast = fast.next;
 			}
-			fast = fast.next;
 		}
 		//此时fast为null，slow需要断开与后面重复元素的连接
 		slow.next = null;

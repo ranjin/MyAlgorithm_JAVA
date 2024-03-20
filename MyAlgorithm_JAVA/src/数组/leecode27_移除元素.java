@@ -4,11 +4,15 @@ package 数组;
  * 
  * [3,2,2,3] val = 3，输出[2, 2]
  * 
- *                slow
- * 		                  fast
+ * slow
+ * fast
  * 3、		2、		2、		3
  */
 
+/**
+ * 跟数据重复差异点在于：
+ * 需要先给nums[slow]赋值然后再给slow++。这样可以保证nums[0... slow - 1]是不包含val的元素的。
+ */
 public class leecode27_移除元素 {
     public int removeElement(int[] nums, int val) {
     	int n = nums.length;
@@ -22,9 +26,10 @@ public class leecode27_移除元素 {
 			if (nums[fast] != val) {
 				nums[slow] = nums[fast];
 				slow++;
+				fast++;
+			} else {
+				fast++;
 			}
-			// 等于val时，fast++
-			fast++;
 		}
         return slow;
     }
