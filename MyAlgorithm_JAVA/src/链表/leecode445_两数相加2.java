@@ -21,6 +21,50 @@ class ListNode {
 }
 
 class leecode445_两数相加2 {
+	
+    public ListNode addTwoNumbers_011(ListNode l1, ListNode l2) {
+    	ListNode list1 = reverseSingleLink(l1);
+    	ListNode list2 = reverseSingleLink(l2);
+    	
+    	/// 输出新链表
+    	ListNode dummy = new ListNode(-1);
+    	ListNode p = dummy;
+    	
+    	ListNode p1 = list1, p2 = list2;
+    	/// 记录进位
+    	int carry = 0;
+    	if (p1 != null || p2 != null || carry > 0) {
+			int val = carry;
+			if (p1 != null) {
+				val += p1.val;
+				p1 = p1.next;
+			}
+			if (p2 != null) {
+				val += p2.val;
+				p2 = p2.next;
+			}
+			// 进位
+			val = val % 10;
+			carry = val / 10;
+			ListNode node1 = new ListNode(val);
+			p.next = node1;
+			p = p.next;
+		}
+    	ListNode result = reverseSingleLink(dummy.next);
+    	return result;
+    }
+    
+    /// 反转链表
+    public static ListNode reverseSingleLink(ListNode head) {
+    	if (head == null || head.next == null) {
+			return head;
+		}
+
+    	ListNode last = reverseSingleLink(head.next);
+    	head.next.next = head;
+    	head.next = null;
+    	return last;
+	}
     // 解法1: 采用反转链表的方式
     public ListNode addTwoNumbers_01(ListNode l1, ListNode l2) {
         ListNode list1 = reverse(l1);

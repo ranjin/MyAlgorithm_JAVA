@@ -11,25 +11,31 @@ public class LeeCode322_零钱兑换 {
 	
 	
     public int coinChange(int[] coins, int amount) {
-    	
+    	return dp(coins, amount);
     }
-	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-
-
-	}
-	int coins(int n) {
-		if (n < 1) {
-			return Integer.MAX_VALUE;
+    
+	// dp定义：要凑出金额n，至少要dp(coins, n)个硬币
+	int dp(int[] coins, int amount) {
+		// base case
+		if (amount == 0) {
+			return 0;
 		}
-		if (n == 1 || n == 5 || n == 20 || n == 25) {
-			return 1;
+		if (amount < 0) {
+			return -1;
 		}
-		int min1= Math.min(coins(n - 25), coins(n - 20));
-		int min2= Math.min(coins(n - 5), coins(n - 1));
-		return Math.min(min1, min2) + 1;
+		int res = Integer.MAX_VALUE;
+		for (int coin : coins) {
+			// 计算字问题的结果
+			int subProblem = dp(coins, amount - coin);
+			// 子问题无解则跳过
+			if (subProblem == -1) {
+				continue;
+			}
+			// 在子问题中选择最优解，然后加1
+			res = Math.min(res, subProblem + 1);
+		}
+		return res = (res == Integer.MAX_VALUE) ? -1 : res;
  	}
-
 }
 
 
