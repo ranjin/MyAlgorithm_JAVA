@@ -5,8 +5,7 @@ package 动态规划;
  * 输入：s = "cbbd"
  * 输出："bb"
  */
-public class LeeCode05_最长回文子串 {
-
+public class LeeCode05_最长回文子串 {	
     public String longestPalindrome(String s) {
 		String result = "";
 		if (s.length() == 0) {
@@ -22,7 +21,6 @@ public class LeeCode05_最长回文子串 {
 		return result;
 	}
 
-
 	// 寻找以s[l]与s[r]为中点的最长回文子串
 	public String palindrome(String s, int l, int r) {
 		while(l >= 0 && r < s.length() && s.charAt(l) == s.charAt(r)) {
@@ -33,19 +31,3 @@ public class LeeCode05_最长回文子串 {
 		return s.substring(l+1, r);
 	}
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

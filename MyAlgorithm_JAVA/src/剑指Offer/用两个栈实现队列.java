@@ -34,13 +34,21 @@ public class 用两个栈实现队列 {
 	 * @param value
 	 */
 	
+	/**
+	 *	stack1     stack2
+	 *
+	 *	queue 
+	 */
+	
 	//添加元素
 	public void appendTail(int value) {
 		//直接放入stack1中
+		
 		stack1.push(value);
 	}
 	
 	//删除元素 在stack2有元素的时候可以直接pop操作 实现队列的先进先出
+	// stack1不为空，stack2为空。
 	public int deleteHead() {
 		int deleteItem;
 		if (stack2.empty()) {
@@ -56,6 +64,10 @@ public class 用两个栈实现队列 {
 		deleteItem = stack2.peek();
 		stack2.pop();
 		return deleteItem;
+		
+//		int deleteItem = stack2.peek();
+//		stack2.pop();
+//		return deleteItem;
 	}
 	
 	public static void main(String[] args) {

@@ -9,11 +9,6 @@ package 数组;
  * 把字符串列表看成一个二维数组，然后用一个嵌套 for 循环计算这个二维数组前面有多少列的元素完全相同即可。
  */
 public class leecode14_最长公共前缀 {
-
-	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-
-	}
 	
     public String longestCommonPrefix(String[] strs) {
 

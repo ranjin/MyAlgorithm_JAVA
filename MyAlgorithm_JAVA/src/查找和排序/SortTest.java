@@ -1,6 +1,7 @@
 package 查找和排序;
 
-import 反转链表系列.LeeCode206_反转链表.ListNode;
+import java.util.Iterator;
+import java.util.Stack;
 
 public class SortTest {
 
@@ -12,27 +13,32 @@ public class SortTest {
 			this.val = val;
 		}
 	}
-	//		 pre  cur   nxt
-	//             1 -	 2 -  3 -	4 - 5
-    //
-	public ListNode reverseList_normal(ListNode head) {
-		
-		ListNode pre = null, cur = head, nxt = head;
-		
-		while (cur != null) {
-			nxt = cur.next;
-			cur.next = pre;
-			pre = cur;
-			cur = nxt;
-			
+
+    public boolean isValid(String s) {
+    	Stack<Character> stack = new Stack<Character>();
+    	char[] ss = s.toCharArray();
+    	
+    	for (char c : ss) {
+			if (c == '{' || c == '(' || c == '[') {
+				stack.push(c);
+			} else {
+				if (!stack.isEmpty() && leftOfChar(c) == stack.peek()) {
+					stack.pop();
+				} else {
+					return false;
+				}
+			}
+
 		}
-		return pre;
-	}
-	public static void main(String[] args) {
-    	int[] nums = new int[] {5, 12, 3, 4, 19, 1, 28, 24};
-//    	quickSort(nums, 0, nums.length);
-    	for (int i : nums) {
-            System.out.println(i);
+    	return stack.isEmpty();
+    }
+    
+    public static char leftOfChar(char c) {
+		if (c == '}') {
+			return '{';
+		} else if (c == ']') {
+			return '[';
 		}
+		return '(';
 	}
 }

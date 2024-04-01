@@ -20,6 +20,26 @@ import java.util.HashMap;
 
 public class LeeCode_560_和为K的子数组 {
 
+	int subarraySum(int[] nums, int k) {
+		int n = nums.length;
+		int res = 0;
+		int[] preNums = new int[nums.length + 1];
+		
+		preNums[0] = 0;
+		for (int i = 1; i < nums.length; i++) {
+			preNums[i] = preNums[i - 1] + nums[i];
+		}
+		
+		// 两次循环
+		for (int i = 0; i < preNums.length; i++) {
+			for (int j = 0; j < i; j++) {
+				if (preNums[i] - preNums[j] == k) {
+					res++;
+				}
+			}
+		}
+		return res;
+	}
 	// 普通解法，两次遍历，时间复杂度O(n^2)
 	int subarraySum(int[] nums, int k) {
 		int n = nums.length;

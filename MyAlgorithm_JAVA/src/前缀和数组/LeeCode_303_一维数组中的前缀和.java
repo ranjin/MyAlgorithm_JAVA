@@ -4,6 +4,7 @@ public class LeeCode_303_一维数组中的前缀和 {
 
 	/**
 	 * 普通解法
+	 * 时间复杂度：O(N),会频繁调用sumRange方法
 	 */
 	class NumArray {
 		private int[] nums;
@@ -25,12 +26,11 @@ public class LeeCode_303_一维数组中的前缀和 {
 	 * 前缀和
 	 * index: 		0		1		2		3		4		5		
 	 * 
-	 * nums:  		3		5		2		-2		4		1
-	 * preSum:0		3		8		10		8		12		13
+	 * nums:  				3		5		2		-2		4		1
+	 * preSum:		0		3		8		10		8		12		13
 	 */
 	class NumArray2 {
 		private int[] preSum;
-		
 		// 输入一个数组，构造前缀和
 	    public NumArray2(int[] nums) {
 	    	// preSum[0] = 0, 便于计算累加和
