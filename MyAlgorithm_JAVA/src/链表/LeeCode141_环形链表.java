@@ -18,6 +18,8 @@ public class LeeCode141_环形链表 {
 			fast = fast.next.next;
 			slow = slow.next;
 		}
+		
+		// 相等，则有环
 		if (slow == fast) {
 			return true;
 		}

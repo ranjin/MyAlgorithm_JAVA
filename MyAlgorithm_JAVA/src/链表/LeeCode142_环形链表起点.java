@@ -31,7 +31,7 @@ public class LeeCode142_环形链表起点 {
 			return null;
 		}
 				
-		// slow重新指向head
+		// 寻找环的起点slow重新指向head
 		slow = head;
 		while (slow != fast) {
 			slow = slow.next;
