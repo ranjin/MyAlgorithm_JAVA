@@ -17,7 +17,7 @@ public class 快速排序_quickSort {
 		// 临界case：至少需要有2个元素
 		if (end - begin < 2) {
 			return;
-		}
+		}	
 		// begin元素的复制 pivot为分割点
 		int middle = findPartition(array, begin, end);
 		sort(array, begin, middle);

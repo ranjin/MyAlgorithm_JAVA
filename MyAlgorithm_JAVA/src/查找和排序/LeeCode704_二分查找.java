@@ -12,15 +12,18 @@ package 查找和排序;
 public class LeeCode704_二分查找 {
 	public int search(int[] nums, int target) {
 		int left = 0; 
-		int right = nums.length - 1;		
+		int right = nums.length - 1;
+		// 搜索区间为[left, right]
 		while (left <= right) {
 			// 获取mid用这种写法是为了防止(left + right) 溢出。容易超出int范围
 			int mid = left + (right - left) / 2;
 			if (nums[mid] == target) {
 				return mid;
 			} else if (nums[mid] < target) {
+				// 搜索区间为[mid + 1, right]
 				left = mid + 1;
 			} else if (nums[mid] > target) {
+				// 搜索区间为[left, mid - 1]
 				right = mid - 1;
 			}
 		}
