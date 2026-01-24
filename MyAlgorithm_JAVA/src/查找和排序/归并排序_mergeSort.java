@@ -45,7 +45,7 @@ public class 归并排序_mergeSort {
 			// 如果左边还没有结束
 			// 这里加上==号是为了更稳定点。这样右边大于左边的时候，不会调换
 			if (ri < re && leftnums[li] > nums[ri]) {
-				/**
+				/**=-[p
 				 * 左边比较大
 				 * 用nums[ri]的东西覆盖nums[ai]的
 				 */

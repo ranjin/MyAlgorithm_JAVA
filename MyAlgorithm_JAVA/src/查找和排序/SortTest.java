@@ -168,5 +168,42 @@ public class SortTest {
     	
     }
 
-
+    
+    // 反转链表的一部分
+	public ListNode reverseN(ListNode head, int n) {
+		
+	}
+    
+    public void merge(int[] nums1, int[] nums2) { 
+    	int m = nums1.length;
+    	int n = nums2.length;
+    	
+    	
+    	int[] longNums = new int[m + n];
+    	
+    	for (int i = 0; i < longNums.length; i++) {
+			longNums[i] = nums1[i];
+			
+			// 2, 4, 6, 0, 0, 0
+			
+		}
+    	int i = m - 1, j = n - 1;
+    	int p = longNums.length - 1;
+    	while (i >= 0 && j >= 0) {
+			if (longNums[i] > nums2[j]) {
+				longNums[p] = longNums[i];
+				i--;
+			} else {
+				longNums[p] = nums2[j];
+				j--;
+			}
+			p--;
+		}
+    	
+    	while (j >= 0) {
+			longNums[p] = nums2[j];
+			j--;
+			p--;
+		}
+    }
 }

@@ -1,5 +1,7 @@
 package 链表;
 
+
+
 public class test {
 	class ListNode {
 		int val;
@@ -8,41 +10,33 @@ public class test {
 			this.val = val;
 		}
 	}
+
 	
+
 	/**
-	 * 删除链表中的环
-	 * 
-	 * 找到环的起点
+	 * 删除排序链表中的重复元素
+	 *    slow fast)
+	 * 	   1 -> 2 -> 2 -> 3 -> 4
 	 */
-	
-	public ListNode hasCycle(ListNode head) {
-		if (head == null || head.next == null) {
+    public ListNode deleteDuplicates(ListNode head) {
+    	
+    	if (head == null || head.next == null) {
 			return head;
 		}
-		
-		ListNode slow = head, fast = head;
-		
-		while (fast != null && fast.next != null) {
-			slow = slow.next;
-			fast = fast.next.next;
-			if (slow == fast) {
-				break;
+    	
+    	ListNode slow = head;
+    	ListNode fast = head.next;
+    	
+    	while (fast != null) {
+    		if (slow == fast) {
+				fast = fast.next;
+			} else {
+				slow = fast;
+				fast = fast.next;
 			}
 		}
-		
-		/// 没有环
-		if (fast == null || fast.next == null) {
-			return null;
-		}
-		
-		slow = head;
-		
-		while (slow != fast) {
-			slow = slow.next;
-			fast = fast.next;
-		}
-		slow.next = null;
-		
-		return head;
-	}
+    	slow.next = null;
+    	
+    	return head;
+    }
 }

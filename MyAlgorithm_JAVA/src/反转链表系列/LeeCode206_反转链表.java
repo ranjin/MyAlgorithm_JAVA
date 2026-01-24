@@ -14,9 +14,6 @@ public class LeeCode206_反转链表 {
 		ListNode(int val) {
 			this.val = val;
 		}
-	 //       pre        cur          nxt
-		//    1     ->    2	   ->    3	 ->   4
-		// 
 		
 		public ListNode reverseList_normal(ListNode head) {
 			if (head == null || head.next == null) {

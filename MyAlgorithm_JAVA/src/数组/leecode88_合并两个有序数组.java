@@ -52,6 +52,7 @@ class leecode88_合并两个有序数组 {
 		}
 		for (int k = 0; k < longNums.length; k++) {
 			System.out.println(longNums[k]);
+			// longNums:  1 2 3 0 0 0 
 		}
 		
 		int i = m - 1, j = n -1;
