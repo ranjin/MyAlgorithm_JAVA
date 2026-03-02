@@ -2,8 +2,6 @@ package LeeCode;
 
 import java.util.HashMap;
 
-import 单调栈.leecode1019_链表中的下一个更大节点.ListNode;
-
 /**
  * LRU采用哈希表 + 双向链表的形式 - 哈希链表
  * 哈希表查找快，链表插入删除快

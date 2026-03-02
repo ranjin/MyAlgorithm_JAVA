@@ -1,209 +1,59 @@
 package 查找和排序;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Queue;
 
-import 链表.LeeCode21_合并两个有序的链表.ListNode;
-
+public class TreeNode {
+	int val;
+	TreeNode left;
+	TreeNode right;
+}
 
 public class SortTest {
 
-	public class ListNode {
-		int val;
-		ListNode next;
-		ListNode() {}
-		ListNode(int val) {
-			this.val = val;
-		}
-	}
-	
-	// 归并排序
-	public void mergeSort(int[] nums, int begin, int end) {
-	
-		if (end - begin < 2) {
-			return;
-		}
-		
-		int mid = (end + begin) >> 1;
-		
-		mergeSort(nums, begin, mid);
+	// 二叉树的层序遍历
 
-		mergeSort(nums, begin, end);
-		
-		merge(nums, begin, mid, end);
+	public List<List<Integer>> levelOrder(TreeNode root) {
 
-	}
-	
-	
-	// [1]  target: 1
-    public int countTarget(int[] scores, int target) {
-    	int left = 0, right = scores.length;
-    	
-    	int count = 0;
-    	
+		List<List<Integer>> res = new LinkedList<>();
 
-    	for (int i = left; i < right; i++) {
-			if (target == scores[i]) {
-				count++;
-				continue;
-			}
+		if (root == null) {
+			return res;
 		}
-    	return count;
 
-    	
-    }
-	public static void merge(int[] nums, int begin, int mid, int end) {
-		// 备份左边数组
-		
-		int[] leftArr = new int[nums.length >> 1];
-		
-		int li = 0, le = mid - begin;
-		int ri = mid, re = end;
-		
-		int ai = begin;
-		
-		for (int i = li; i < le; i++) {
-			leftArr[i] = nums[begin + i];
-		}
-		
-		while (li < le) {
-			if (ri < re && leftArr[li] > nums[ri]) {
-				nums[ai] = nums[ri];
-				ai++;
-				ri++;
-			} else {
-				nums[ai] = leftArr[li];
-				li++;
-				ai++;
-			}
-		}
-	}
-	// 快排，不断寻找轴节点的过程, 前序遍历
-	public void quickSort(int[] array, int begin, int end) {
-		if (end - begin < 2) {
-			return;
-		}
-		
-		int middle = findPartition(array, begin, end);
-		
-		quickSort(array, begin, middle);
-		quickSort(array, middle + 1, end);
-	}
-	
-	public static int findPartition(int[] array, int begin, int end) {
-		int partition = array[begin];
-		end--;
-		// 默认从右向左
-		
-		
-		while (end < begin) {
-			while (end < begin) {
-				if (array[end] > partition) {
-					end--;
-				} else {
-					// array[end] <= 
-					array[begin] = partition;
-					begin++;
-					break;
+		Queue<TreeNode> queue = new LinkedList<>();
+
+
+		queue.offer(root);
+
+		// 从上到下，每层从左到右
+		while (!queue.isEmpty()) {
+			
+			List<Integer> tempList = new LinkedList<>();
+			int sz = queue.size();
+
+			for (int i = 0; i < sz; i++) {
+				TreeNode node = queue.poll();
+
+				tempList.add(node.val);
+
+				if (node.left != null) {
+					queue.offer(node.left);
+				}
+				if (node.right != null) {
+					queue.offer(node.right);
 				}
 			}
-			
-			while (end < begin) {
-				if (array[begin] < partition) {
-					begin++;
-				} else {
-					// array[end] <= 
-					array[end] = partition;
-					end--;
-					break;
-				}
-			}
-		}
-		array[begin] = partition;
-		return begin;
-	}
-	
-	/**
-	 * 合并两个有序链表
-	 * 1 -> 2 -> 3
-	 * 2 -> 3 -> 4
-	 */
-	
-    public ListNode mergeTwoLists(ListNode list1, ListNode list2) {
-    	if (list1 == null) {
-			return list2;
-		}
-    	
-    	if (list2 == null) {
-			return list1;
-		}
-    	
-    	ListNode dummy = new ListNode(-1);
-    	
-    	ListNode p = dummy;
-    	ListNode p1 = list1, p2 = list2;
-    	
-    	while (p1 != null && p2 != null) {
-			if (p1.val > p2.val) {
-				p.next = p2;
-				p2 = p2.next;
-			} else {
-				p.next = p1;
-				p1 = p1.next;		
-			}
-			p = p.next;
-		}
-    	if (p1 == null) {
-			p.next = p2;
-		} 
-    	
-    	if (p2 == null) {
-			p.next = p1;
-		}
-    	
-    	
-    	return dummy.next;
-    	
-    }
 
-    
-    // 反转链表的一部分
-	public ListNode reverseN(ListNode head, int n) {
-		
+
+			res.add(tempList);
+		}
+		return res;
+
+
 	}
-    
-    public void merge(int[] nums1, int[] nums2) { 
-    	int m = nums1.length;
-    	int n = nums2.length;
-    	
-    	
-    	int[] longNums = new int[m + n];
-    	
-    	for (int i = 0; i < longNums.length; i++) {
-			longNums[i] = nums1[i];
-			
-			// 2, 4, 6, 0, 0, 0
-			
-		}
-    	int i = m - 1, j = n - 1;
-    	int p = longNums.length - 1;
-    	while (i >= 0 && j >= 0) {
-			if (longNums[i] > nums2[j]) {
-				longNums[p] = longNums[i];
-				i--;
-			} else {
-				longNums[p] = nums2[j];
-				j--;
-			}
-			p--;
-		}
-    	
-    	while (j >= 0) {
-			longNums[p] = nums2[j];
-			j--;
-			p--;
-		}
-    }
+
 }

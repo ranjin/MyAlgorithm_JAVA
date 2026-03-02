@@ -1,5 +1,9 @@
 package 查找和排序;
 
+/**
+ * 时间复杂度：O(n*logN)
+ * 空间复杂度：O(n)
+ */
 public class 归并排序_mergeSort {	
 	// 对[begin, end)范围内的元素进行归并排序
 	public static void sort(int[] nums, int begin, int end) {
@@ -34,6 +38,8 @@ public class 归并排序_mergeSort {
 		int re = end;
 		
 		// nums的索引
+
+		int ss = Integer.Min_Value;
 		int ai = begin;
 		
 		// 备份左边数组
