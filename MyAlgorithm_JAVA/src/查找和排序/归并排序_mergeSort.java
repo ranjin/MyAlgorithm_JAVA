@@ -39,7 +39,6 @@ public class 归并排序_mergeSort {
 		
 		// nums的索引
 
-		int ss = Integer.Min_Value;
 		int ai = begin;
 		
 		// 备份左边数组

@@ -81,10 +81,11 @@ public class LeeCode146_LRU缓存机制 {
 		// node1 <- x <- tail
 		public void addLast(Node x) {
 			
-			// x节点在中间，设置新节点的前后驱
+			// 第一步：设置新节点X的前驱和后继指针
 			x.prev = tail.prev;
 			x.next = tail;
 			
+			// 第二步：修改原有链表的指针，把X接入链表(只知道尾部)
 			tail.prev.next = x;
 			tail.prev = x;
 			size++;
@@ -95,7 +96,9 @@ public class LeeCode146_LRU缓存机制 {
 		// node1 -> x -> node2
 		// node1 <- x <- ndoe2
 		public void remove(Node x) {
+			// 第一步：让X的前驱节点的后继 -> 指向X的后继节点
 			x.prev.next = x.next;
+			// 第二步：让X的后继节点的前驱 -> 指向X的前驱节点
 			x.next.prev = x.prev;
 			size--;
 		}
